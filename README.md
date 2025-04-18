@@ -1,1 +1,7 @@
 # VeriFi LUMS AHB-Lite Verification Project
+
+### Project Management Sheet: [text](https://docs.google.com/spreadsheets/d/1W85Cz7Z-6MQlJ6yw1DnRUsjJVUnKJ7JZBQCOZkSLqRw/edit?usp=sharing)
+
+### Project Report: [text](https://docs.google.com/document/d/1cIRl7O7ia4HydFKw5EkdwlYhG3GCAaAOz5O9zuAVuWU/edit?usp=sharing)
+
+### Project Presentation: [text](https://docs.google.com/presentation/d/1OikKTpXdg4XnI2FWx_stbR0-0461Al_KWPFjeJBoxVw/edit?usp=sharing)
