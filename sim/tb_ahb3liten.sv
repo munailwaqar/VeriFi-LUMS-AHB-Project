@@ -2,7 +2,7 @@ module tb_ahb3liten;
 timeunit 1ns;
 timeprecision 1ns;
 
-  parameter HADDR_SIZE = 16;
+  parameter HADDR_SIZE = 32;
   parameter HDATA_SIZE = 32;
 
   logic HCLK = 0;
@@ -42,12 +42,10 @@ timeprecision 1ns;
     .HRESP      (bus.HRESP)
   );
 
-  // Test
-  ahb3lite_test #(HADDR_SIZE, HDATA_SIZE) test (
-    .HCLK(HCLK),
-    .HRESETn(HRESETn),
-    .bus(bus)
-  );
+   assign bus.HREADY = bus.HREADYOUT;	
+
+  // 1). basic write and read test --> word transer, single burst, NONSEQ
+  ahb3lite_test #(HADDR_SIZE, HDATA_SIZE) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
 
   initial begin
     $dumpfile("waveform.vcd");

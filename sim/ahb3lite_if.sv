@@ -1,4 +1,4 @@
-interface ahb3lite_if #(parameter HADDR_SIZE = 16, HDATA_SIZE = 32) (
+interface ahb3lite_if #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32) (
   input logic HCLK,
   input logic HRESETn
 );
@@ -20,8 +20,8 @@ timeprecision 1ns;
 
   // Master modport
   modport master (
-    output HSEL, HADDR, HWDATA, HWRITE, HSIZE, HBURST, HPROT, HTRANS, HREADY,
-    input  HRDATA, HREADYOUT, HRESP
+    output HSEL, HADDR, HWDATA, HWRITE, HSIZE, HBURST, HPROT, HTRANS,
+    input  HRDATA, HREADYOUT, HRESP, HREADY
   );
 
 endinterface
