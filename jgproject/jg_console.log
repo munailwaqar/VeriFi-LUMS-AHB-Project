@@ -1,0 +1,135 @@
+2025-04-28 13:16:13.626284 (5916) main____ INFO    ----------------------------------------
+2025-04-28 13:16:13.626416 (5916) main____ INFO    Jasper version info
+2025-04-28 13:16:13.626436 (5916) main____ INFO      tool      : Jasper 2022.06
+2025-04-28 13:16:13.626452 (5916) main____ INFO      version   : 2022.06 FCS 64 bits
+2025-04-28 13:16:13.626464 (5916) main____ INFO      build date: 2022.06.22 13:46:24 UTC
+2025-04-28 13:16:13.626474 (5916) main____ INFO    ----------------------------------------
+2025-04-28 13:16:13.626484 (5916) main____ INFO    Runtime info:
+2025-04-28 13:16:13.626495 (5916) main____ INFO      platform  : Linux 3.10.0-1160.114.2.el7.x86_64 x86_64
+2025-04-28 13:16:13.626510 (5916) main____ INFO      hostname  : pc4
+2025-04-28 13:16:13.626521 (5916) main____ INFO      pid       : 5916
+2025-04-28 13:16:13.626532 (5916) main____ INFO      arguments : '-style' 'windows' 'slave.tcl'
+2025-04-28 13:16:13.626548 (5916) main____ INFO      locale    : UTF-8
+2025-04-28 13:16:13.626559 (5916) main____ INFO    ----------------------------------------
+2025-04-28 13:16:13.626568 (5916) main____ INFO    System resource limits info:
+2025-04-28 13:16:13.626580 (5916) main____ INFO      virtual memory: unlimited
+2025-04-28 13:16:13.626590 (5916) main____ INFO      cpu time      : unlimited
+2025-04-28 13:16:13.626607 (5916) main____ INFO      processes     : 4096
+2025-04-28 13:16:13.626630 (5916) main____ INFO      stack size    : 8388608 B
+2025-04-28 13:16:13.626643 (5916) main____ INFO      core file size: 0 B
+2025-04-28 13:16:13.626655 (5916) main____ INFO      open files    : 1024
+2025-04-28 13:16:13.626666 (5916) main____ INFO      file size     : unlimited
+2025-04-28 13:16:13.626676 (5916) main____ INFO    ----------------------------------------
+2025-04-28 13:16:13.626686 (5916) main____ INFO    Memory statistics:
+2025-04-28 13:16:13.626699 (5916) main____ INFO      total physical memory  : 7842124 kB
+2025-04-28 13:16:13.626709 (5916) main____ INFO      free physical memory   : 435764 kB
+2025-04-28 13:16:13.626718 (5916) main____ INFO      committed address space: 16168868 kB
+2025-04-28 13:16:13.626727 (5916) main____ INFO    ----------------------------------------
+2025-04-28 13:16:13.628261 (5916) main____ INFO    Important environment variables:
+2025-04-28 13:16:13.628339 (5916) main____ INFO      CDS_INST_DIR          : '/mnt/cadence_tools/installs/IC231'
+2025-04-28 13:16:13.628371 (5916) main____ INFO      CDS_LIC_FILE          : '5280@cadenceserver'
+2025-04-28 13:16:13.628387 (5916) main____ INFO      CDS_ROOT              : '/mnt/cadence_tools/installs/IC231'
+2025-04-28 13:16:13.628401 (5916) main____ INFO      DISPLAY               : ':1'
+2025-04-28 13:16:13.628416 (5916) main____ INFO      JASPER_INSTALL_DIR    : '/mnt/cadence_tools/installs/JASPER22/jasper_2022.06'
+2025-04-28 13:16:13.628440 (5916) main____ INFO      JASPER_MACRO_LINEFILES: '1'
+2025-04-28 13:16:13.628453 (5916) main____ INFO      JASPER_OS_CHECK       : '1'
+2025-04-28 13:16:13.628465 (5916) main____ INFO      JG_MACRO_LINEFILES    : '1'
+2025-04-28 13:16:13.628476 (5916) main____ INFO      LANG                  : 'en_US.UTF-8'
+2025-04-28 13:16:13.628489 (5916) main____ INFO      LM_LICENSE_FILE       : '5280@cadenceserver'
+2025-04-28 13:16:13.628499 (5916) main____ INFO    ----------------------------------------
+2025-04-28 13:16:13.630407 (5916) lic_core INFO    Initializing license system ...
+2025-04-28 13:16:13.635807 (5916) lic_core INFO    ... license system initialized.
+2025-04-28 13:16:13.638986 (5916) lic__man INFO    Claim 'main' for <ui>.
+2025-04-28 13:16:13.639058 (5916) lic_core INFO    (1) checking out 'jasper_interactive' ...
+2025-04-28 13:16:13.644996 (5916) lic_core INFO    ... (1) checkout failed (error: -5) ("FLEXnet ERROR(-5, 0, 0): No such feature exists.")
+2025-04-28 13:16:13.645060 (5916) lic_core INFO    (2) checking out 'jasper_pint' ...
+2025-04-28 13:16:13.660297 (5916) lic_core INFO    ... (2) checkout succeeded
+2025-04-28 13:16:13.660455 (5916) lic__man INFO    Claim 'fpv' for <ui>.
+2025-04-28 13:16:13.660496 (5916) lic_core INFO    (3) checking out 'jasper_fpv' ...
+2025-04-28 13:16:13.665237 (5916) lic_core INFO    ... (3) checkout failed (error: -5) ("FLEXnet ERROR(-5, 0, 0): No such feature exists.")
+2025-04-28 13:16:13.665362 (5916) lic_core INFO    (4) checking out 'jasper_fao' ...
+2025-04-28 13:16:13.669262 (5916) lic_core INFO    ... (4) checkout failed (error: -5) ("FLEXnet ERROR(-5, 0, 0): No such feature exists.")
+2025-04-28 13:16:13.669311 (5916) lic_core INFO    (5) checking out 'jasper_papp' ...
+2025-04-28 13:16:13.684423 (5916) lic_core INFO    ... (5) checkout succeeded
+2025-04-28 13:16:13.685177 (5916) main____ INFO    Tool inactivity delay is 480000 ms.
+2025-04-28 13:16:14.387351 (5916) lic__man INFO    Claim 'fpv' for <ui>.
+2025-04-28 13:16:14.587065 (5916) lic__man INFO    Unclaim 'fpv' for <ui>.
+2025-04-28 13:16:14.587099 (5916) lic__man INFO    Claim 'fpv' for <ui>.
+2025-04-28 13:16:14.591128 (5916) session_ INFO    Starting analysis session with session id 'session_0' (launcher: <local>) ...
+2025-04-28 13:16:14.593432 (5916) session_ INFO    Analysis session with session id 'session_0' started (pid: 5935)
+2025-04-28 13:16:15.399082 (5916) session_ INFO    Analysis session 'session_0' connected to the console (host: 127.0.0.1:59670)
+2025-04-28 13:16:15.797132 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 13:16:15.798005 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 13:16:19.303515 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 13:33:37.722326 (5916) lic__man INFO    Entering idle state.
+2025-04-28 15:09:18.789210 (5916) lic__man INFO    Leaving idle state.
+2025-04-28 15:21:33.341561 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:21:33.341694 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:21:36.228325 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:22:24.170875 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:22:24.170942 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:22:24.391847 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:23:07.859937 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:23:07.860005 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:23:08.102448 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:24:15.193879 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:24:15.193935 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:24:15.523260 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:24:16.650872 (5916) lic__man INFO    Claim 'fpv' for 'session_0'.
+2025-04-28 15:24:18.044565 (5916) lic__man INFO    Claim 'fpv' for 'session_0'.
+2025-04-28 15:24:18.044614 (5916) lic__man INFO    Claim 'fpv' for 'session_0/prove-0'.
+2025-04-28 15:24:18.649901 (5916) lic__man INFO    Unclaim everything for 'session_0/prove-0'.
+2025-04-28 15:27:31.909759 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:27:31.909903 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:27:32.195810 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:35:33.722420 (5916) lic__man INFO    Entering idle state.
+2025-04-28 15:37:56.890763 (5916) lic__man INFO    Leaving idle state.
+2025-04-28 15:37:59.743775 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:37:59.743911 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:38:00.080316 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:40:46.456943 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:40:46.457026 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:40:46.785017 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:41:55.733913 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:41:55.733962 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:41:56.038204 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:42:47.603917 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:42:47.603968 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:42:47.827672 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:48:03.170981 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:48:03.171075 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:48:03.513186 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:48:17.282864 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:48:17.282914 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:48:17.449294 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:49:44.313916 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:49:44.313968 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:49:44.611440 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:50:35.897344 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:50:35.897469 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:50:36.145365 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:51:45.211921 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:51:45.212062 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:51:45.510193 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:52:06.115929 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:52:06.115978 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:52:06.309515 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:52:40.005877 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:52:40.005929 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:52:40.222654 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:54:13.976894 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:54:13.976959 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:54:14.381335 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:57:46.476019 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:57:46.476095 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:57:46.746925 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:58:15.784690 (5916) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-04-28 15:58:15.784740 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 15:58:15.953176 (5916) lic__man INFO    Unclaim everything for 'session_0'.
+2025-04-28 16:06:15.722479 (5916) lic__man INFO    Entering idle state.
+2025-04-28 16:22:13.879692 (5916) lic__man INFO    Leaving idle state.
+2025-04-28 16:22:13.956471 (5916) main____ INFO    About to exit: requested from GUI
+2025-04-28 16:22:14.272049 (5916) session_ INFO    Analysis session 'session_0' disconnected.
+2025-04-28 16:22:14.278120 (5916) lic_core INFO    (2) checkin jasper_pint
+2025-04-28 16:22:14.279007 (5916) lic_core INFO    (5) checkin jasper_papp
+2025-04-28 16:22:14.283419 (5916) main____ INFO    Exiting with status 0.

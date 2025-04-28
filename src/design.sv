@@ -294,4 +294,27 @@ timeprecision 1ns;
   always @(posedge HCLK)
      HRDATA <= contention ? dout_local : dout;
 
+
+
+///////////////////////ASSERTIONS///////////////////////////////////
+
+
+// //assertion for REST asserted and deasserted synchronously
+// //the rst is deasserted after the rising edge clk 
+
+// //assert thet rst is active low
+
+// assert property (@ (posedge HCLK) disable iff (HRESETn == 1'b0)
+//   HRESETn == 1'b0
+//   )
+//   else $fatal ("teh HRESETn is not active low");
+
+// //synchronous deassertion of HRESETn after rising edge of clk 
+
+// assert property (@(posedge HCLK) disable iff (HRESETn == 1'b1)
+//   HRESETn == 1'b1
+//   ) 
+//   else $fatal ("the HRESETn is not synchronously deasserted");
+
+
 endmodule
