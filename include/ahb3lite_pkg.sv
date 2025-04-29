@@ -57,4 +57,3 @@ package ahb3lite_pkg;
                    HRESP_ERROR = 1'b1;
 
 endpackage
-
