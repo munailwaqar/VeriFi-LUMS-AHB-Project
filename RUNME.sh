@@ -1,2 +1,2 @@
-#!/bin/sh 
-jg slave.tcl
+#!/bin/sh
+jg run.tcl

@@ -2,13 +2,18 @@ module tb_ahb3liten;
 timeunit 1ns;
 timeprecision 1ns;
 
+
+
   parameter HADDR_SIZE = 32;
   parameter HDATA_SIZE = 32;
 
-  logic HCLK = 0;
-  logic HRESETn = 0;
+  logic HCLK ;
+  logic HRESETn;
 
-  always #5 HCLK = ~HCLK;
+`ifdef include_clk
+
+ always #5 HCLK = ~HCLK;
+`endif
 
   initial begin
     HRESETn = 0;
