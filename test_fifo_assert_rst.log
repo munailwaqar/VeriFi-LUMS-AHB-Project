@@ -1,0 +1,107 @@
+xrun: 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
+TOOL:	xrun	22.03-s001: Started on Apr 30, 2025 at 17:13:50 PKT
+xrun
+	-f ./flist.f
+		./include/ahb3lite_pkg.sv
+		./src/design.sv
+		./src/mem.sv
+		./src/design_property.sv
+		./sim/ahb3lite_if.sv
+		./sim/ahb3lite_test.sv
+		./sim/tb_ahb3liten.sv
+	./src/design.sv
+	./sim/tb_ahb3liten.sv
+	-access +rwc
+	-sv
+	-disable_sem2009
+	-clean
+	-logfile test_fifo_assert_rst.log
+	-define assert_rst
+xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
+file: ./include/ahb3lite_pkg.sv
+	package worklib.ahb3lite_pkg:sv
+		errors: 0, warnings: 0
+file: ./src/design.sv
+	module worklib.ahb3liten:sv
+		errors: 0, warnings: 0
+file: ./src/mem.sv
+	module worklib.mem:sv
+		errors: 0, warnings: 0
+file: ./src/design_property.sv
+	module worklib.ahb3liten_prop:sv
+		errors: 0, warnings: 0
+file: ./sim/ahb3lite_if.sv
+	interface worklib.ahb3lite_if:sv
+		errors: 0, warnings: 0
+file: ./sim/ahb3lite_test.sv
+	module worklib.ahb3lite_test:sv
+		errors: 0, warnings: 0
+file: ./sim/tb_ahb3liten.sv
+	module worklib.tb_ahb3liten:sv
+		errors: 0, warnings: 0
+file: ./src/design.sv
+module ahb3liten
+               |
+xmvlog: *W,RECOME (./src/design.sv,1|15): recompiling design unit worklib.ahb3liten:sv.
+	First compiled from line 1 of ./src/design.sv.
+file: ./sim/tb_ahb3liten.sv
+module tb_ahb3liten;
+                  |
+xmvlog: *W,RECOME (./sim/tb_ahb3liten.sv,2|18): recompiling design unit worklib.tb_ahb3liten:sv.
+	First compiled from line 2 of ./sim/tb_ahb3liten.sv.
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		ahb3lite_pkg
+		tb_ahb3liten
+		Caching library 'worklib' ....... Done
+  ) BIND_UUT(
+           |
+xmelab: *W,CUVWSI (./sim/tb_ahb3liten.sv,68|11): 10 input ports were not connected:
+xmelab: (./src/design_property.sv,18): HADDR
+xmelab: (./src/design_property.sv,19): HWDATA
+xmelab: (./src/design_property.sv,20): HRDATA
+xmelab: (./src/design_property.sv,21): HWRITE
+xmelab: (./src/design_property.sv,22): HSIZE
+xmelab: (./src/design_property.sv,23): HBURST
+xmelab: (./src/design_property.sv,24): HPROT
+xmelab: (./src/design_property.sv,25): HTRANS
+xmelab: (./src/design_property.sv,27): HREADY
+xmelab: (./src/design_property.sv,28): HRESP
+
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.ahb3lite_test:sv <0x157cf6cc>
+			streams:  10, words:  9834
+		worklib.ahb3liten_prop:sv <0x247cd23b>
+			streams:   4, words:  1984
+		worklib.tb_ahb3liten:sv <0x6f0120b0>
+			streams:  17, words:  2843
+		worklib.mem:sv <0x51d4d015>
+			streams:   4, words:  1913
+		worklib.ahb3liten:sv <0x03abc7e6>
+			streams:  32, words: 10120
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 5       5
+		Interfaces:              1       1
+		Verilog packages:        1       1
+		Registers:              67      67
+		Scalar wires:           23       -
+		Vectored wires:         21       -
+		Named events:            1       1
+		Always blocks:          19      17
+		Initial blocks:          6       6
+		Cont. assignments:       6       7
+		Pseudo assignments:     19      19
+		Assertions:              1       1
+		Simulation timescale:  1ns
+	Writing initial simulation snapshot: worklib.tb_ahb3liten:sv
+Loading snapshot worklib.tb_ahb3liten:sv .................... Done
+xcelium> source /mnt/cadence_tools/installs/XCELIUM2203/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> exit
+TOOL:	xrun	22.03-s001: Exiting on Apr 30, 2025 at 17:13:51 PKT  (total: 00:00:01)

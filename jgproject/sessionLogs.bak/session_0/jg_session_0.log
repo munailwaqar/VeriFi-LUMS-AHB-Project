@@ -5,10 +5,10 @@
 # version   : 2022.06 FCS 64 bits
 # build date: 2022.06.22 13:46:24 UTC
 # ----------------------------------------
-# started   : 2025-04-30 11:16:24 PKT
+# started   : 2025-04-30 17:01:17 PKT
 # hostname  : pc4.(none)
-# pid       : 13118
-# arguments : '-label' 'session_0' '-console' '//127.0.0.1:40480' '-style' 'windows' '-data' 'AAAAnnicY2RgYLCp////PwMYMFcBCQEGHwZfhiAGVyDpzxAGpBkYvBhMGYwYLBgMGBwYkhkSGVIYUhnygKxUhmIgLmIoA5NWRKkCA8YHEJrBhhHEA2I+oFQpULkeQwlQSw5IDgAXSBf3' '-proj' '/home/ee5214s1m4/gitfile/VeriFi-LUMS-AHB-Project/jgproject/sessionLogs/session_0' '-init' '-hidden' '/home/ee5214s1m4/gitfile/VeriFi-LUMS-AHB-Project/jgproject/.tmp/.initCmds.tcl' 'run.tcl'
+# pid       : 24008
+# arguments : '-label' 'session_0' '-console' '//127.0.0.1:43089' '-style' 'windows' '-data' 'AAAAnnicY2RgYLCp////PwMYMFcBCQEGHwZfhiAGVyDpzxAGpBkYvBhMGYwYLBgMGBwYkhkSGVIYUhnygKxUhmIgLmIoA5NWRKkCA8YHEJrBhhHEA2I+oFQpULkeQwlQSw5IDgAXSBf3' '-proj' '/home/ee5214s1m4/gitfile/VeriFi-LUMS-AHB-Project/jgproject/sessionLogs/session_0' '-init' '-hidden' '/home/ee5214s1m4/gitfile/VeriFi-LUMS-AHB-Project/jgproject/.tmp/.initCmds.tcl' 'run.tcl'
 
 Any disclosure about the Cadence Design Systems software or its use
 model to any third party violates the written Non-Disclosure Agreement
@@ -54,71 +54,49 @@ INFO (INL011): Processing "-f" file "/home/ee5214s1m4/gitfile/VeriFi-LUMS-AHB-Pr
 [-- (VERI-1482)] Analyzing Verilog file '/mnt/cadence_tools/installs/JASPER22/jasper_2022.06/lib/verilog/packages/std/std.sv' into library 'std'
 [-- (VERI-1482)] Analyzing Verilog file './include/ahb3lite_pkg.sv'
 [-- (VERI-1482)] Analyzing Verilog file './src/design.sv'
-[WARN (VERI-1763)] ./src/design.sv(335): SVA directive is not sensitive to any clock. The directive will be sampled on the posedge of the fastest clock.
 [-- (VERI-1482)] Analyzing Verilog file './src/mem.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/design_property.sv'
 [-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_if.sv'
 [-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_test.sv'
 [-- (VERI-1482)] Analyzing Verilog file './sim/tb_ahb3liten.sv'
-[WARN (VERI-1206)] ./sim/tb_ahb3liten.sv(143): overwriting previous definition of module 'ahb3lite_test'
-[INFO (VERI-2142)] ./sim/ahb3lite_test.sv(71): previous definition of design element 'ahb3lite_test' is here
 % elaborate -top tb_ahb3liten
 INFO (ISW003): Top module name is "tb_ahb3liten".
-[ERROR (VERI-9029)] Module tb_ahb3liten has not been analyzed yet
-[ERROR (VDB-9017)] Module tb_ahb3liten could not be elaborated
-Summary of errors detected:
-	[ERROR (VERI-9029)] Module tb_ahb3liten has not been analyzed yet
-	[ERROR (VDB-9017)] Module tb_ahb3liten could not be elaborated
-ERROR (ENL034): 2 errors detected in the design file(s).
-
-ERROR: problem encountered at line 3 in file run.tcl
-
-% include run.tcl
-%% clear -all
-INFO (IPF121): Cleared environment completely for new design analysis.
-%% analyze -sv09 -f flist.f
-INFO (INL011): Processing "-f" file "/home/ee5214s1m4/gitfile/VeriFi-LUMS-AHB-Project/flist.f".
-[-- (VERI-1482)] Analyzing Verilog file '/mnt/cadence_tools/installs/JASPER22/jasper_2022.06/lib/verilog/packages/std/std.sv' into library 'std'
-[-- (VERI-1482)] Analyzing Verilog file './include/ahb3lite_pkg.sv'
-[-- (VERI-1482)] Analyzing Verilog file './src/design.sv'
-[WARN (VERI-1763)] ./src/design.sv(335): SVA directive is not sensitive to any clock. The directive will be sampled on the posedge of the fastest clock.
-[-- (VERI-1482)] Analyzing Verilog file './src/mem.sv'
-[-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_if.sv'
-[-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_test.sv'
-[-- (VERI-1482)] Analyzing Verilog file './sim/tb_ahb3liten.sv'
-%% elaborate -top tb_ahb3liten
-INFO (ISW003): Top module name is "tb_ahb3liten".
-[INFO (HIER-8002)] ./sim/tb_ahb3liten.sv(60): Disabling old hierarchical reference handler
+[INFO (HIER-8002)] ./sim/tb_ahb3liten.sv(79): Disabling old hierarchical reference handler
+[WARN (VERI-2435)] ./sim/tb_ahb3liten.sv(73): port 'HADDR' is not connected on this instance
 [INFO (VERI-1018)] ./src/mem.sv(1): compiling module 'mem:(ABITS=8)'
 [INFO (VERI-2571)] ./src/mem.sv(25): extracting RAM for identifier 'mem_array'
 [WARN (VERI-9033)] ./src/mem.sv(25): array mem_array (size 8192) automatically BLACK-BOXED. Use the "elaborate -bbox_a" command to prevent automatic black-boxing.
-[INFO (VERI-1018)] ./sim/tb_ahb3liten.sv(1): compiling module 'tb_ahb3liten'
-[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(22): 'initial' construct is ignored
-[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(58): 'initial' construct is ignored
+[INFO (VERI-1018)] ./src/design_property.sv(5): compiling module 'ahb3liten_prop:(HADDR_SIZE=32)'
+[INFO (VERI-1018)] ./sim/tb_ahb3liten.sv(2): compiling module 'tb_ahb3liten'
+[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(24): 'initial' construct is ignored
+[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(77): 'initial' construct is ignored
 [INFO (VERI-1018)] ./src/design.sv(1): compiling module 'ahb3liten:(HADDR_SIZE=32)'
 [WARN (VERI-1209)] ./src/design.sv(113): expression size 32 truncated to fit in target size 7
 [WARN (VERI-1959)] ./src/design.sv(155): left shift count >= width of value
 [WARN (VERI-1959)] ./src/design.sv(156): left shift count >= width of value
+[WARN (VERI-8028)] ./sim/tb_ahb3liten.sv(68): missing/open ports on instance BIND_UUT of module ahb3liten_prop
+[WARN (VDB-1013)] ./sim/tb_ahb3liten.sv(73): input port 'HADDR[31]' is not connected on this instance
 [INFO (VERI-1018)] ./sim/ahb3lite_test.sv(1): compiling module 'ahb3lite_test:(bus=ahb3lite_if:(HADDR_SIZE=32,HDATA_SIZE=32)_master)'
 [WARN (VERI-1060)] ./sim/ahb3lite_test.sv(18): 'initial' construct is ignored
 [WARN (VERI-1060)] ./sim/ahb3lite_test.sv(69): 'initial' construct is ignored
-[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(10): net 'HCLK' does not have a driver
-[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(11): net 'HRESETn' does not have a driver
+[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(11): net 'HCLK' does not have a driver
+[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(12): net 'HRESETn' does not have a driver
 INFO (INL208): Elaboration synthesis summary:
-  Number of synthesized netlists          5 (1 packages)
+  Number of synthesized netlists          6 (1 packages)
   Single run mode                         On
-  Pipeline                                On (4 pipelined netlists)
+  Pipeline                                On (5 pipelined netlists)
   Late hierarchical reference connection  On
-  Number of analyzed Verilog modules      6 (5 synthesized)
+  Number of analyzed Verilog modules      7 (6 synthesized)
   Number of analyzed VHDL entities        0 (0 synthesized)
 INFO (INL003): Clearing all state information (assumes, stopats, and so forth).
 tb_ahb3liten
-%% 
-%% clock HCLK            
-%% reset ~HRESETn
+[<embedded>] % 
+[<embedded>] % clock HCLK            
+[<embedded>] % reset ~HRESETn
 INFO (IPM031): Clearing proof results of all properties.
 INFO (IRS006): Current reset condition is "HRESETn".
-%% 
-%% visualize {1[*45]}
+[<embedded>] % 
+[<embedded>] % visualize {1[*45]}
 INFO (IVS015): Setting Visualize task to "<embedded>".
 INFO (IVS008): Expanding analysis region to enable visualization of "1[*45]".
 INFO (IRS029): Starting reset analysis: phase 1 of 4.
@@ -126,7 +104,7 @@ INFO (IRS030): Running reset analysis: phase 2 of 4.
 INFO (IRS031): Running reset analysis: phase 3 of 4.
 INFO (IRS020): Starting the reset analysis simulation with a limit of 100 iterations (phase 4 of 4).
 INFO (IRS024): Reset iterations 0 to 4 analyzed.
-INFO (IRS018): Reset analysis simulation executed for 3 iterations. Assigned values for 2 of 113 design flops, 0 of 0 design latches, 44 of 44 internal elements.
+INFO (IRS018): Reset analysis simulation executed for 3 iterations. Assigned values for 1 of 112 design flops, 0 of 0 design latches, 44 of 44 internal elements.
 INFO (IRS039): Reset analysis complete.
 INFO (IPF031): Settings used for proof thread 0:
     orchestration                 = off (auto)
@@ -144,66 +122,30 @@ INFO (IPF031): Settings used for proof thread 0:
 0.0.Hp: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
 0.0.Hp: Proof Simplification Iteration 1	[0.00 s]
 0.0.PRE: A trace with 45 cycles was found. [0.00 s]
-0.0.Hp: Proof Simplification Iteration 2	[0.32 s]
+0.0.Hp: Proof Simplification Iteration 2	[0.06 s]
 0.0.PRE: A proof was found: No trace exists. [0.00 s]
 0.0.PRE: A proof was found: No trace exists. [0.00 s]
-0.0.PRE: Proof Simplification completed in 0.32 s
+0.0.PRE: Proof Simplification completed in 0.06 s
 covered
-covered
-[<embedded>] % prove -bg -task {<embedded>}
+[<embedded>] % prove -bg -all
 Ncustom1: Custom engine code is hT3Ng7hPPfiYQOTDZ3qhYOwGAM51eA+J/FjkM5shLioAsqhgLR4Ft+O1BuKG6ilQ83B9tLXSl+CwjiTMAQA
 Bcustom2: Custom engine code is hT3NZbhPDfiY2AbBQnsjfOxn6c+6e6yL+/e8fYmWaKaTqwEA
 AMcustom3: Custom engine code is hT3Ng7hP/feYQOTDZ3qhYOwGAM51eA+J/FjkM5shLioAsqhgLR4Ft+O1BuKG6ilQ83B9tLXSmmqwm7g9AQA
-background 1
-INFO (IPF036): Starting proof on task: "<embedded>", 1 properties to prove with 0 already proven/unreachable
-INFO (IPF031): Settings used for proof thread 1:
-    orchestration                 = on (auto)
-    time_limit                    = 86400s
-    per_property_time_limit       = 1s * 10 ^ scan
-    engine_mode                   = auto
-    proofgrid_per_engine_max_jobs = 1
-    max engine jobs               = auto
-    proofgrid_mode                = local
-    proofgrid_restarts            = 10
-1: Using multistage preprocessing
-1: Starting reduce
-1: Finished reduce in 0s
-AMcustom4: Custom engine code is hT3N1rhP11/52HrFRS21ROp2LOjVTgPvT8L8BGXHgLhaIuqtT4nARFjUqrBL+7pLmaTOzBepZW/Jm8SSrHDybSQtoNiO3y43wk+dEoWlsZizu97Fih6O6lPVG/LpWP5SsUPwlGagLNa1FKEFvwVXyX7//8prySbvSxIHXr5er+z4RAEA
-1.0.PRE: Performing Proof Simplification...
-1.0.N: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
-Ncustom5: Custom engine code is hT3OXrhPByJp3TrFSTLhUmMH4KVtJgmTCnNDF46yMXOKY48m4LS5nE7yBzFjA7kDuwO/GhGUpEPiky3p3wmPn3dJZHxFMsafSoObRzSC+tn7sEY0WbTdZ/FV4hL3MYH/b1CIUvXSWR4wqEoVLsmMOD4xIPT4lI1LO6ZCO7PnnWQuLwetnvKlrXx6wCW/A+x+enqslg1YPobi4wEF/EvbzOvcTYdJvl2s4H2yZg2b2ofAVN5WvhWk1HoBAA
-1.0.N: Proof Simplification Iteration 1	[0.00 s]
-ADcustom6: Custom engine code is hT3Nv7hPv1752HrFRa2kROx2f/ECJeZB2AZsLdlO8VwmIuqtT4nIDFXclhg+O+o+DMmQCekbheGk0kK28laA9gaOFDXsQp29J3X615HY1IPHJWd6FUFvCHjO+p1k652b5JJvZlShNpGlGSXAiQe/mEAj6tEBAA
-Ncustom7: Custom engine code is hT3NR7hPByFp3TrFSTLhUmMH4KWtJglTyV/c51BHEeZWamnJv767nE6PCak26bd3gf3XGN3rIRheufhDieCJQVISo+gNYUKhiUedBKGtsP/a18svAnlMJZudHxDFwK5ufsyoxsIyiAeSY2oi3tEuoDHr5gw42DFKAG3PqO3CEsl8Azzdt3pl5nGA1Ifv2H02eYsFzWb/nfp8PMb3F0krE/EgBcm8TD9Div8BAA
-1.0.PRE: A trace with 1 cycles was found. [0.00 s]
-Tricustom8: Custom engine code is hT3Nu7hP3fiYQADBZnYcglNHp9bfd7EOeniIqP/ji8sGLQu8yhsFO+wxJ+O+R0bU8g/IewXFomyos+viQnWc2xYNYmMqpo3i40O7DaZR7qfp4YqNx26KRvQ/qx0BAA
-INFO (IPF055): 1.0.PRE: A counterexample (cex) with 1 cycles was found for the property "tb_ahb3liten.dut.check_write_property_p" in 0.00 s.
-1.0.N: Proof Simplification Iteration 2	[0.00 s]
-1.0.PRE: A proof was found: No trace exists. [0.00 s]
-INFO (IPF057): 1.0.PRE: The property ":noDeadEnd" was proven in 0.00 s.
-    Use check_assumptions -show -dead_end to show this property in the property table.
-1.0.PRE: A proof was found: No trace exists. [0.00 s]
-INFO (IPF057): 1.0.PRE: The property ":noConflict" was proven in 0.00 s.
-    Use check_assumptions -show to show this property in the property table.
-INFO (IPF047): 1.0.PRE: The cover property ":live" was covered in 1 cycles in 0.00 s.
-    Use check_assumptions -show -live to show this property in the property table.
-1.0.PRE: Proof Simplification completed in 0.00 s
-INFO (IPF059): Completed proof on task: "<embedded>" for proof thread 1
 
 ==============================================================
 SUMMARY
 ==============================================================
-           Properties Considered              : 1
-                 assertions                   : 1
-                  - proven                    : 0 (0%)
-                  - bounded_proven (user)     : 0 (0%)
-                  - bounded_proven (auto)     : 0 (0%)
-                  - marked_proven             : 0 (0%)
-                  - cex                       : 1 (100%)
-                  - ar_cex                    : 0 (0%)
-                  - undetermined              : 0 (0%)
-                  - unknown                   : 0 (0%)
-                  - error                     : 0 (0%)
+           Properties Considered              : 0
+                 assertions                   : 0
+                  - proven                    : 0
+                  - bounded_proven (user)     : 0
+                  - bounded_proven (auto)     : 0
+                  - marked_proven             : 0
+                  - cex                       : 0
+                  - ar_cex                    : 0
+                  - undetermined              : 0
+                  - unknown                   : 0
+                  - error                     : 0
                  covers                       : 0
                   - unreachable               : 0
                   - bounded_unreachable (user): 0
@@ -212,14 +154,7 @@ SUMMARY
                   - undetermined              : 0
                   - unknown                   : 0
                   - error                     : 0
-[<embedded>] % visualize -violation -property <embedded>::tb_ahb3liten.dut.check_write_property_p -new_window
-INFO (IVS015): Setting Visualize task to "<embedded>".
-INFO (IVS008): Expanding analysis region to enable visualization of "<embedded>::tb_ahb3liten.dut.check_write_property_p".
-cex
-[<embedded>] % visualize -violation -property <embedded>::tb_ahb3liten.dut.check_write_property_p -new_window
-INFO (IVS015): Setting Visualize task to "<embedded>".
-INFO (IVS008): Expanding analysis region to enable visualization of "<embedded>::tb_ahb3liten.dut.check_write_property_p".
-cex
+background 1
 [<embedded>] % include run.tcl
 %% clear -all
 INFO (IPF121): Cleared environment completely for new design analysis.
@@ -228,35 +163,39 @@ INFO (INL011): Processing "-f" file "/home/ee5214s1m4/gitfile/VeriFi-LUMS-AHB-Pr
 [-- (VERI-1482)] Analyzing Verilog file '/mnt/cadence_tools/installs/JASPER22/jasper_2022.06/lib/verilog/packages/std/std.sv' into library 'std'
 [-- (VERI-1482)] Analyzing Verilog file './include/ahb3lite_pkg.sv'
 [-- (VERI-1482)] Analyzing Verilog file './src/design.sv'
-[WARN (VERI-1763)] ./src/design.sv(335): SVA directive is not sensitive to any clock. The directive will be sampled on the posedge of the fastest clock.
 [-- (VERI-1482)] Analyzing Verilog file './src/mem.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/design_property.sv'
 [-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_if.sv'
 [-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_test.sv'
 [-- (VERI-1482)] Analyzing Verilog file './sim/tb_ahb3liten.sv'
 %% elaborate -top tb_ahb3liten
 INFO (ISW003): Top module name is "tb_ahb3liten".
-[INFO (HIER-8002)] ./sim/tb_ahb3liten.sv(60): Disabling old hierarchical reference handler
+[INFO (HIER-8002)] ./sim/tb_ahb3liten.sv(79): Disabling old hierarchical reference handler
+[WARN (VERI-2435)] ./sim/tb_ahb3liten.sv(73): port 'HADDR' is not connected on this instance
 [INFO (VERI-1018)] ./src/mem.sv(1): compiling module 'mem:(ABITS=8)'
 [INFO (VERI-2571)] ./src/mem.sv(25): extracting RAM for identifier 'mem_array'
 [WARN (VERI-9033)] ./src/mem.sv(25): array mem_array (size 8192) automatically BLACK-BOXED. Use the "elaborate -bbox_a" command to prevent automatic black-boxing.
-[INFO (VERI-1018)] ./sim/tb_ahb3liten.sv(1): compiling module 'tb_ahb3liten'
-[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(22): 'initial' construct is ignored
-[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(58): 'initial' construct is ignored
+[INFO (VERI-1018)] ./src/design_property.sv(5): compiling module 'ahb3liten_prop:(HADDR_SIZE=32)'
+[INFO (VERI-1018)] ./sim/tb_ahb3liten.sv(2): compiling module 'tb_ahb3liten'
+[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(24): 'initial' construct is ignored
+[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(77): 'initial' construct is ignored
 [INFO (VERI-1018)] ./src/design.sv(1): compiling module 'ahb3liten:(HADDR_SIZE=32)'
 [WARN (VERI-1209)] ./src/design.sv(113): expression size 32 truncated to fit in target size 7
 [WARN (VERI-1959)] ./src/design.sv(155): left shift count >= width of value
 [WARN (VERI-1959)] ./src/design.sv(156): left shift count >= width of value
+[WARN (VERI-8028)] ./sim/tb_ahb3liten.sv(68): missing/open ports on instance BIND_UUT of module ahb3liten_prop
+[WARN (VDB-1013)] ./sim/tb_ahb3liten.sv(73): input port 'HADDR[31]' is not connected on this instance
 [INFO (VERI-1018)] ./sim/ahb3lite_test.sv(1): compiling module 'ahb3lite_test:(bus=ahb3lite_if:(HADDR_SIZE=32,HDATA_SIZE=32)_master)'
 [WARN (VERI-1060)] ./sim/ahb3lite_test.sv(18): 'initial' construct is ignored
 [WARN (VERI-1060)] ./sim/ahb3lite_test.sv(69): 'initial' construct is ignored
-[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(10): net 'HCLK' does not have a driver
-[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(11): net 'HRESETn' does not have a driver
+[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(11): net 'HCLK' does not have a driver
+[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(12): net 'HRESETn' does not have a driver
 INFO (INL208): Elaboration synthesis summary:
-  Number of synthesized netlists          5 (1 packages)
+  Number of synthesized netlists          6 (1 packages)
   Single run mode                         On
-  Pipeline                                On (4 pipelined netlists)
+  Pipeline                                On (5 pipelined netlists)
   Late hierarchical reference connection  On
-  Number of analyzed Verilog modules      6 (5 synthesized)
+  Number of analyzed Verilog modules      7 (6 synthesized)
   Number of analyzed VHDL entities        0 (0 synthesized)
 INFO (INL003): Clearing all state information (assumes, stopats, and so forth).
 tb_ahb3liten
@@ -274,7 +213,7 @@ INFO (IRS030): Running reset analysis: phase 2 of 4.
 INFO (IRS031): Running reset analysis: phase 3 of 4.
 INFO (IRS020): Starting the reset analysis simulation with a limit of 100 iterations (phase 4 of 4).
 INFO (IRS024): Reset iterations 0 to 4 analyzed.
-INFO (IRS018): Reset analysis simulation executed for 3 iterations. Assigned values for 2 of 113 design flops, 0 of 0 design latches, 44 of 44 internal elements.
+INFO (IRS018): Reset analysis simulation executed for 3 iterations. Assigned values for 1 of 112 design flops, 0 of 0 design latches, 44 of 44 internal elements.
 INFO (IRS039): Reset analysis complete.
 INFO (IPF031): Settings used for proof thread 0:
     orchestration                 = off (auto)
@@ -292,123 +231,180 @@ INFO (IPF031): Settings used for proof thread 0:
 0.0.Hp: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
 0.0.Hp: Proof Simplification Iteration 1	[0.00 s]
 0.0.PRE: A trace with 45 cycles was found. [0.00 s]
-0.0.Hp: Proof Simplification Iteration 2	[0.10 s]
+0.0.Hp: Proof Simplification Iteration 2	[0.06 s]
 0.0.PRE: A proof was found: No trace exists. [0.00 s]
 0.0.PRE: A proof was found: No trace exists. [0.00 s]
-0.0.PRE: Proof Simplification completed in 0.10 s
+0.0.PRE: Proof Simplification completed in 0.06 s
 covered
 covered
-[<embedded>] % prove -bg -task {<embedded>}
-background 1
-INFO (IPF036): Starting proof on task: "<embedded>", 1 properties to prove with 0 already proven/unreachable
-INFO (IPF031): Settings used for proof thread 1:
-    orchestration                 = on (auto)
+[<embedded>] % include run.tcl
+%% clear -all
+INFO (IPF121): Cleared environment completely for new design analysis.
+%% analyze -sv09 -f flist.f
+INFO (INL011): Processing "-f" file "/home/ee5214s1m4/gitfile/VeriFi-LUMS-AHB-Project/flist.f".
+[-- (VERI-1482)] Analyzing Verilog file '/mnt/cadence_tools/installs/JASPER22/jasper_2022.06/lib/verilog/packages/std/std.sv' into library 'std'
+[-- (VERI-1482)] Analyzing Verilog file './include/ahb3lite_pkg.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/design.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/mem.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/design_property.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_if.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_test.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/tb_ahb3liten.sv'
+%% elaborate -top tb_ahb3liten
+INFO (ISW003): Top module name is "tb_ahb3liten".
+[INFO (HIER-8002)] ./sim/tb_ahb3liten.sv(79): Disabling old hierarchical reference handler
+[WARN (VERI-2435)] ./sim/tb_ahb3liten.sv(73): port 'HADDR' is not connected on this instance
+[INFO (VERI-1018)] ./src/mem.sv(1): compiling module 'mem:(ABITS=8)'
+[INFO (VERI-2571)] ./src/mem.sv(25): extracting RAM for identifier 'mem_array'
+[WARN (VERI-9033)] ./src/mem.sv(25): array mem_array (size 8192) automatically BLACK-BOXED. Use the "elaborate -bbox_a" command to prevent automatic black-boxing.
+[INFO (VERI-1018)] ./src/design_property.sv(5): compiling module 'ahb3liten_prop:(HADDR_SIZE=32)'
+[INFO (VERI-1018)] ./sim/tb_ahb3liten.sv(2): compiling module 'tb_ahb3liten'
+[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(24): 'initial' construct is ignored
+[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(77): 'initial' construct is ignored
+[INFO (VERI-1018)] ./src/design.sv(1): compiling module 'ahb3liten:(HADDR_SIZE=32)'
+[WARN (VERI-1209)] ./src/design.sv(113): expression size 32 truncated to fit in target size 7
+[WARN (VERI-1959)] ./src/design.sv(155): left shift count >= width of value
+[WARN (VERI-1959)] ./src/design.sv(156): left shift count >= width of value
+[WARN (VERI-8028)] ./sim/tb_ahb3liten.sv(68): missing/open ports on instance BIND_UUT of module ahb3liten_prop
+[WARN (VDB-1013)] ./sim/tb_ahb3liten.sv(73): input port 'HADDR[31]' is not connected on this instance
+[INFO (VERI-1018)] ./sim/ahb3lite_test.sv(1): compiling module 'ahb3lite_test:(bus=ahb3lite_if:(HADDR_SIZE=32,HDATA_SIZE=32)_master)'
+[WARN (VERI-1060)] ./sim/ahb3lite_test.sv(18): 'initial' construct is ignored
+[WARN (VERI-1060)] ./sim/ahb3lite_test.sv(69): 'initial' construct is ignored
+[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(11): net 'HCLK' does not have a driver
+[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(12): net 'HRESETn' does not have a driver
+INFO (INL208): Elaboration synthesis summary:
+  Number of synthesized netlists          6 (1 packages)
+  Single run mode                         On
+  Pipeline                                On (5 pipelined netlists)
+  Late hierarchical reference connection  On
+  Number of analyzed Verilog modules      7 (6 synthesized)
+  Number of analyzed VHDL entities        0 (0 synthesized)
+INFO (INL003): Clearing all state information (assumes, stopats, and so forth).
+tb_ahb3liten
+%% 
+%% clock HCLK            
+%% reset ~HRESETn
+INFO (IPM031): Clearing proof results of all properties.
+INFO (IRS006): Current reset condition is "HRESETn".
+%% 
+%% visualize {1[*45]}
+INFO (IVS015): Setting Visualize task to "<embedded>".
+INFO (IVS008): Expanding analysis region to enable visualization of "1[*45]".
+INFO (IRS029): Starting reset analysis: phase 1 of 4.
+INFO (IRS030): Running reset analysis: phase 2 of 4.
+INFO (IRS031): Running reset analysis: phase 3 of 4.
+INFO (IRS020): Starting the reset analysis simulation with a limit of 100 iterations (phase 4 of 4).
+INFO (IRS024): Reset iterations 0 to 4 analyzed.
+INFO (IRS018): Reset analysis simulation executed for 3 iterations. Assigned values for 1 of 112 design flops, 0 of 0 design latches, 44 of 44 internal elements.
+INFO (IRS039): Reset analysis complete.
+INFO (IPF031): Settings used for proof thread 0:
+    orchestration                 = off (auto)
     time_limit                    = 86400s
     per_property_time_limit       = 1s * 10 ^ scan
-    engine_mode                   = auto
+    engine_mode                   = Hp Ht N B 
     proofgrid_per_engine_max_jobs = 1
-    max engine jobs               = auto
+    max engine jobs               = Hp Ht N B, total 4
     proofgrid_mode                = local
     proofgrid_restarts            = 10
-1: Using multistage preprocessing
-1: Starting reduce
-1: Finished reduce in 0s
-1.0.PRE: Performing Proof Simplification...
-1.0.N: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
-1.0.N: Proof Simplification Iteration 1	[0.00 s]
-1.0.N: Proof Simplification Iteration 2	[0.00 s]
-1.0.PRE: A proof was found: No trace exists. [0.00 s]
-INFO (IPF057): 1.0.PRE: The property ":noDeadEnd" was proven in 0.00 s.
-    Use check_assumptions -show -dead_end to show this property in the property table.
-1.0.PRE: A proof was found: No trace exists. [0.00 s]
-INFO (IPF057): 1.0.PRE: The property ":noConflict" was proven in 0.00 s.
-    Use check_assumptions -show to show this property in the property table.
-INFO (IPF047): 1.0.PRE: The cover property ":live" was covered in 1 cycles in 0.00 s.
-    Use check_assumptions -show -live to show this property in the property table.
-1.0.PRE: Proof Simplification completed in 0.00 s
-1: About to start ProofGrid in its own thread with a limit of 10000 pending notifications and a limit of 10 traces.
-1: =============================== ProofGrid start ===============================
-1: ProofGrid usable level: 1
-1: ProofGrid is starting event handling
-1.0.Hp: Proofgrid shell started at 13795@pc4(local) jg_13118_pc4_4
-1.0.N: Proofgrid shell started at 13794@pc4(local) jg_13118_pc4_4
-1.0.Hp: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
-1.0.Hp: Trace Attempt  1	[0.00 s]
-1.0.N: Requesting engine job to stop
-1.0.Hp: Requesting engine job to terminate
-INFO (IPF144): 1: Initiating shutdown of proof [0.00 s]
-1.0.Hp: A trace with 1 cycles was found. [0.00 s]
-INFO (IPF055): 1.0.Hp: A counterexample (cex) with 1 cycles was found for the property "tb_ahb3liten.dut.check_write_property_p" in 0.00 s.
-1.0.Hp: All properties determined. [0.00 s]
-1.0.N: All properties determined. [0.00 s]
-1.0.Hp: Exited with Success (@ 0.00 s)
-1: ProofGrid usable level: 0
-1.0.N: Exited with Success (@ 0.00 s)
-1.0.Ht: Proofgrid shell started at 13826@pc4(local) jg_13118_pc4_4
-1.0.Ht: Requesting engine job to terminate
-1.0.Ht: Preventing job from starting because proof is shutting down.
-1.0.Ht: Requesting engine job to terminate
-1.0.Ht: Interrupted. [0.00 s]
-1.0.Ht: Exited with Success (@ 0.04 s)
-1.0.B: Proofgrid shell started at 13827@pc4(local) jg_13118_pc4_4
-1.0.B: Requesting engine job to terminate
-1.0.B: Preventing job from starting because proof is shutting down.
-1.0.B: Requesting engine job to terminate
-1.0.B: Interrupted. [0.00 s]
-1.0.B: Exited with Success (@ 0.04 s)
-1: --------------------------------------------------------------
-ProofGrid Summary (utilization 1.27 %)
---------------------------------------------------------------
-     engines started                               :     4
-     engine jobs started                           :     4
-
-    Average time in state (seconds)
-    ------------------------------------------------------
-    Engine  Pending     Running        Dead    Utilization
-    ------------------------------------------------------
-      N        0.05        0.00        0.00        1.87 %
-     Hp        0.05        0.00        0.00        2.55 %
-     Ht        0.04        0.00        0.00        0.00 %
-      B        0.04        0.00        0.00        0.00 %
-    all        0.04        0.00        0.00        1.27 %
-
-    Total time in state (seconds)
-    -----------------------------------------
-            Pending     Running        Dead  
-    -----------------------------------------
-               0.18        0.00        0.00
-
-    Data read    : 1.61 kiB
-    Data written : 1.58 kiB
-
-1: All pending notifications were processed.
-INFO (IPF059): Completed proof on task: "<embedded>" for proof thread 1
-
-==============================================================
-SUMMARY
-==============================================================
-           Properties Considered              : 1
-                 assertions                   : 1
-                  - proven                    : 0 (0%)
-                  - bounded_proven (user)     : 0 (0%)
-                  - bounded_proven (auto)     : 0 (0%)
-                  - marked_proven             : 0 (0%)
-                  - cex                       : 1 (100%)
-                  - ar_cex                    : 0 (0%)
-                  - undetermined              : 0 (0%)
-                  - unknown                   : 0 (0%)
-                  - error                     : 0 (0%)
-                 covers                       : 0
-                  - unreachable               : 0
-                  - bounded_unreachable (user): 0
-                  - covered                   : 0
-                  - ar_covered                : 0
-                  - undetermined              : 0
-                  - unknown                   : 0
-                  - error                     : 0
+0: Using multistage preprocessing
+0: Starting reduce
+0: Finished reduce in 0s
+0.0.PRE: Performing Proof Simplification...
+0.0.Hp: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+0.0.Hp: Proof Simplification Iteration 1	[0.00 s]
+0.0.PRE: A trace with 45 cycles was found. [0.00 s]
+0.0.Hp: Proof Simplification Iteration 2	[0.06 s]
+0.0.PRE: A proof was found: No trace exists. [0.00 s]
+0.0.PRE: A proof was found: No trace exists. [0.00 s]
+0.0.PRE: Proof Simplification completed in 0.06 s
+covered
+covered
+[<embedded>] % include /home/ee5214s1m4/gitfile/VeriFi-LUMS-AHB-Project/run.tcl
+%% clear -all
+INFO (IPF121): Cleared environment completely for new design analysis.
+%% analyze -sv09 -f flist.f
+INFO (INL011): Processing "-f" file "/home/ee5214s1m4/gitfile/VeriFi-LUMS-AHB-Project/flist.f".
+[-- (VERI-1482)] Analyzing Verilog file '/mnt/cadence_tools/installs/JASPER22/jasper_2022.06/lib/verilog/packages/std/std.sv' into library 'std'
+[-- (VERI-1482)] Analyzing Verilog file './include/ahb3lite_pkg.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/design.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/mem.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/design_property.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_if.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_test.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/tb_ahb3liten.sv'
+%% elaborate -top tb_ahb3liten
+INFO (ISW003): Top module name is "tb_ahb3liten".
+[INFO (HIER-8002)] ./sim/tb_ahb3liten.sv(79): Disabling old hierarchical reference handler
+[WARN (VERI-2435)] ./sim/tb_ahb3liten.sv(73): port 'HADDR' is not connected on this instance
+[INFO (VERI-1018)] ./src/mem.sv(1): compiling module 'mem:(ABITS=8)'
+[INFO (VERI-2571)] ./src/mem.sv(25): extracting RAM for identifier 'mem_array'
+[WARN (VERI-9033)] ./src/mem.sv(25): array mem_array (size 8192) automatically BLACK-BOXED. Use the "elaborate -bbox_a" command to prevent automatic black-boxing.
+[INFO (VERI-1018)] ./src/design_property.sv(5): compiling module 'ahb3liten_prop:(HADDR_SIZE=32)'
+[INFO (VERI-1018)] ./sim/tb_ahb3liten.sv(2): compiling module 'tb_ahb3liten'
+[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(24): 'initial' construct is ignored
+[WARN (VERI-1060)] ./sim/tb_ahb3liten.sv(77): 'initial' construct is ignored
+[INFO (VERI-1018)] ./src/design.sv(1): compiling module 'ahb3liten:(HADDR_SIZE=32)'
+[WARN (VERI-1209)] ./src/design.sv(113): expression size 32 truncated to fit in target size 7
+[WARN (VERI-1959)] ./src/design.sv(155): left shift count >= width of value
+[WARN (VERI-1959)] ./src/design.sv(156): left shift count >= width of value
+[WARN (VERI-8028)] ./sim/tb_ahb3liten.sv(68): missing/open ports on instance BIND_UUT of module ahb3liten_prop
+[WARN (VDB-1013)] ./sim/tb_ahb3liten.sv(73): input port 'HADDR[31]' is not connected on this instance
+[INFO (VERI-1018)] ./sim/ahb3lite_test.sv(1): compiling module 'ahb3lite_test:(bus=ahb3lite_if:(HADDR_SIZE=32,HDATA_SIZE=32)_master)'
+[WARN (VERI-1060)] ./sim/ahb3lite_test.sv(18): 'initial' construct is ignored
+[WARN (VERI-1060)] ./sim/ahb3lite_test.sv(69): 'initial' construct is ignored
+[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(11): net 'HCLK' does not have a driver
+[WARN (VDB-1002)] ./sim/tb_ahb3liten.sv(12): net 'HRESETn' does not have a driver
+INFO (INL208): Elaboration synthesis summary:
+  Number of synthesized netlists          6 (1 packages)
+  Single run mode                         On
+  Pipeline                                On (5 pipelined netlists)
+  Late hierarchical reference connection  On
+  Number of analyzed Verilog modules      7 (6 synthesized)
+  Number of analyzed VHDL entities        0 (0 synthesized)
+INFO (INL003): Clearing all state information (assumes, stopats, and so forth).
+tb_ahb3liten
+%% 
+%% clock HCLK            
+%% reset ~HRESETn
+INFO (IPM031): Clearing proof results of all properties.
+INFO (IRS006): Current reset condition is "HRESETn".
+%% 
+%% visualize {1[*45]}
+INFO (IVS015): Setting Visualize task to "<embedded>".
+INFO (IVS008): Expanding analysis region to enable visualization of "1[*45]".
+INFO (IRS029): Starting reset analysis: phase 1 of 4.
+INFO (IRS030): Running reset analysis: phase 2 of 4.
+INFO (IRS031): Running reset analysis: phase 3 of 4.
+INFO (IRS020): Starting the reset analysis simulation with a limit of 100 iterations (phase 4 of 4).
+INFO (IRS024): Reset iterations 0 to 4 analyzed.
+INFO (IRS018): Reset analysis simulation executed for 3 iterations. Assigned values for 1 of 112 design flops, 0 of 0 design latches, 44 of 44 internal elements.
+INFO (IRS039): Reset analysis complete.
+INFO (IPF031): Settings used for proof thread 0:
+    orchestration                 = off (auto)
+    time_limit                    = 86400s
+    per_property_time_limit       = 1s * 10 ^ scan
+    engine_mode                   = Hp Ht N B 
+    proofgrid_per_engine_max_jobs = 1
+    max engine jobs               = Hp Ht N B, total 4
+    proofgrid_mode                = local
+    proofgrid_restarts            = 10
+0: Using multistage preprocessing
+0: Starting reduce
+0: Finished reduce in 0s
+0.0.PRE: Performing Proof Simplification...
+0.0.Hp: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+0.0.Hp: Proof Simplification Iteration 1	[0.00 s]
+0.0.PRE: A trace with 45 cycles was found. [0.00 s]
+0.0.Hp: Proof Simplification Iteration 2	[0.06 s]
+0.0.PRE: A proof was found: No trace exists. [0.00 s]
+0.0.PRE: A proof was found: No trace exists. [0.00 s]
+0.0.PRE: Proof Simplification completed in 0.06 s
+covered
+covered
+INFO (IPL005): Received request to exit from the console.
 INFO (IPL014): Waiting for the Tcl-thread to exit.
 INFO: Waiting for proof threads to stop...
 INFO: Proof threads stopped.
-INFO (IPL018): The peak resident set memory use for this session was 0.383 GB.
+INFO (IPL018): The peak resident set memory use for this session was 0.381 GB.
 INFO (IPL015): The Tcl-thread exited with status 0.
 INFO (IPL016): Exiting the analysis session with status 0.

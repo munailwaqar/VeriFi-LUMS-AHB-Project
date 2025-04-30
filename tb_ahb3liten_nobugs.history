@@ -1,0 +1,1 @@
+s1(30Apr2025:17:01:02):  xrun "-f ./flist.f" ./src/design.sv ./sim/tb_ahb3liten.sv "-access +rwc -sv -disable_sem2009 -clean" -logfile tb_ahb3liten_nobugs.log 

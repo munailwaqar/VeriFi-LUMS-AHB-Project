@@ -1,0 +1,23 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-MESSAGES
++EMGRLOG
+test_fifo_deassert_rst.log
+-XLSTIME
+1746016064
+-XLKEEP
+-XLMODE
+./xcelium.d/run.lnx86.22.03.d
+-RUNMODE
+-CDSLIB
+./xcelium.d/run.lnx86.22.03.d/cds.lib
+-HDLVAR
+./xcelium.d/run.lnx86.22.03.d/hdl.var
+-XLNAME
+xrun
+-XLVERSION
+"TOOL:	xrun	22.03-s001"
+-XLNAME
+./xcelium.d/run.lnx86.22.03.d/pc4_27573

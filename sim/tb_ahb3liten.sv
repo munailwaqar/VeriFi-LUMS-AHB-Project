@@ -1,3 +1,4 @@
+`define HREADYOUT 
 module tb_ahb3liten;
 timeunit 1ns;
 timeprecision 1ns;
@@ -10,6 +11,7 @@ timeprecision 1ns;
   logic HCLK ;
   logic HRESETn;
 
+  wire HREADYOUT;
 `ifdef include_clk
 
  always #5 HCLK = ~HCLK;
@@ -52,6 +54,23 @@ timeprecision 1ns;
   // 1). basic write and read test --> word transer, single burst, NONSEQ
   ahb3lite_test #(HADDR_SIZE, HDATA_SIZE) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
 
+
+///use the binding 
+// bind dut_mod prop_mod (
+// .PROP_PORT(DUT_PORT)
+// )
+
+bind ahb3liten ahb3liten_prop #(
+    .MEM_SIZE(32),
+    .MEM_DEPTH(256),
+    .HADDR_SIZE(HADDR_SIZE),
+    .HDATA_SIZE(HDATA_SIZE)
+  ) BIND_UUT(
+                .HCLK     (HCLK),
+                .HRESETn(HRESETn),
+                .HSEL(HSEL),
+                .HREADYOUT(HREADYOUT)
+  );
   initial begin
     $dumpfile("waveform.vcd");
     $dumpvars(0, tb_ahb3liten);

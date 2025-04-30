@@ -19,11 +19,11 @@ import ahb3lite_pkg::*;
   input      [           2:0] HBURST,
   input      [           3:0] HPROT,
   input      [           1:0] HTRANS,
-  output reg                  HREADYOUT,
+  output logic                  HREADYOUT, //changed from reg to logic 
   input                       HREADY,
   output                      HRESP
 );
-
+  
 timeunit 1ns;
 timeprecision 1ns;
 
@@ -286,27 +286,30 @@ timeprecision 1ns;
    */
   assign HRESP = HRESP_OKAY; //always OK
   
-  always @(posedge HCLK,negedge HRESETn)
-    if      (!HRESETn                          ) HREADYOUT <= 1'b1;
-    else if ( ahb_noseq && ahb_read & HREADYOUT) HREADYOUT <= 1'b0;
-    else                                         HREADYOUT <= 1'b1;
+  always @(posedge HCLK,negedge HRESETn) 
+  begin
+    
+   if(!HRESETn) begin
+      `ifdef assert_rst
+         HREADYOUT <= 1'b1;
+      `endif
+   end
+    
+    else if (ahb_noseq && ahb_read && HREADYOUT) begin
+       `ifdef deassert_rst
+          HREADYOUT <= 1'b0;
+      `endif 
+    end
 
+    else begin
+      `ifdef assert_rst
+        HREADYOUT <= 1'b1;
+      `endif
+    end
+
+    end
   always @(posedge HCLK)
      HRDATA <= contention ? dout_local : dout;
 
-
-
-///////////////////////ASSERTIONS///////////////////////////////////
-
-
-// //assert thet rst is active low
-property check_rstn_asserted;
-  @(posedge HCLK)
-  (HRESETn == 1'b0) |-> (was_ahb_noseq == 1'b1 && HREADYOUT ==1'b1); //if !rst was_ahb_noseq =1'b1
-  
-endproperty
-
-check_rstn_asserted_P: assert property (check_rstn_asserted)
-  else $display($stime,"\t\t FAIL:: check_rstn_asserted\n");
 
 endmodule

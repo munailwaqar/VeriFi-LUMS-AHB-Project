@@ -6,7 +6,7 @@
 
 ./src/design.sv
 ./src/mem.sv
-
+./src/design_property.sv
 #tb_files
 
 ./sim/ahb3lite_if.sv
