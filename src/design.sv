@@ -299,22 +299,14 @@ timeprecision 1ns;
 ///////////////////////ASSERTIONS///////////////////////////////////
 
 
-// //assertion for REST asserted and deasserted synchronously
-// //the rst is deasserted after the rising edge clk 
-
 // //assert thet rst is active low
+property check_rstn_asserted;
+  @(posedge HCLK)
+  (HRESETn == 1'b0) |-> (was_ahb_noseq == 1'b1 && HREADYOUT ==1'b1); //if !rst was_ahb_noseq =1'b1
+  
+endproperty
 
-// assert property (@ (posedge HCLK) disable iff (HRESETn == 1'b0)
-//   HRESETn == 1'b0
-//   )
-//   else $fatal ("teh HRESETn is not active low");
-
-// //synchronous deassertion of HRESETn after rising edge of clk 
-
-// assert property (@(posedge HCLK) disable iff (HRESETn == 1'b1)
-//   HRESETn == 1'b1
-//   ) 
-//   else $fatal ("the HRESETn is not synchronously deasserted");
-
+check_rstn_asserted_P: assert property (check_rstn_asserted)
+  else $display($stime,"\t\t FAIL:: check_rstn_asserted\n");
 
 endmodule
