@@ -7,7 +7,6 @@
 // Notes :
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 module tb_ahb3liten;
 timeunit 1ns;
 timeprecision 1ns;
@@ -61,17 +60,8 @@ timeprecision 1ns;
 
    assign bus.HREADY = bus.HREADYOUT;	
 
-  // UNCOMMENT THE RELEVANT TEST
-  // 1). write and read test --> word transfer, single burst, NONSEQ
- // test_word_rw #(HADDR_SIZE, HDATA_SIZE, DEBUG) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
 
-   // 2). write and read test --> byte transfer, single burst, NONSEQ
- // test_byte_rw #(HADDR_SIZE, HDATA_SIZE, DEBUG) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
+  test_ahb3liten #(HADDR_SIZE, HDATA_SIZE, DEBUG) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
 
-  // 3). write and read test --> halfword transfer, single burst, NONSEQ
- // test_halfword_rw #(HADDR_SIZE, HDATA_SIZE, DEBUG) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
-
-  // 4). write and read test --> word transer, incr4 burst, NONSEQ -> SEQ
-  test_incr4_word #(HADDR_SIZE, HDATA_SIZE, DEBUG) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
 
 endmodule
