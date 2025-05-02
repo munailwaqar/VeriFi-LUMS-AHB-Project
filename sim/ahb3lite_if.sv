@@ -56,7 +56,7 @@ interface ahb3lite_if #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32) (
     HADDR  = addr;
     HWRITE = 1'b1;
     HTRANS = htrans;
-    HSIZE  = hsize;
+    HSIZE = hsize;
     HBURST = hburst;
     HPROT  = hprot;
     HSEL   = hsel;
@@ -81,17 +81,19 @@ interface ahb3lite_if #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32) (
     // Address phase
     @(cb);
     HTRANS = htrans;
-    HADDR  = addr;
+    HADDR = addr;
     HWRITE = 1'b0;
     HSIZE = hsize;
     HBURST = hburst;
     HPROT  = hprot;
-    HSEL   = hsel;
+    HSEL  = hsel;
     
     // Data Phase
-    do @(cb); while (HREADY !== 1'b1);
+    do @(cb); while (cb.HREADY !== 1'b1);
+    repeat(3) @(cb);
     data = HRDATA;
     HTRANS = 2'b00;
+    repeat(2) @(cb);
   endtask
 
 endinterface
