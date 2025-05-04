@@ -53,18 +53,18 @@ interface ahb3lite_if #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32) (
   );
     // Address phase
     @(cb);
-    HADDR  = addr;
-    HWRITE = 1'b1;
-    HTRANS = htrans;
-    HSIZE = hsize;
-    HBURST = hburst;
-    HPROT  = hprot;
-    HSEL   = hsel;
+    cb.HADDR  <= addr;
+    cb.HWRITE <= 1'b1;
+    cb.HTRANS <= htrans;
+    cb.HSIZE <= hsize;
+    cb.HBURST <= hburst;
+    cb.HPROT  <= hprot;
+    cb.HSEL  <= hsel;
     
     // Data Phase
     @(cb);
-    HWDATA = data;
-    HTRANS = 2'b00;
+    cb.HWDATA <= data;
+    cb.HTRANS <= 2'b00;
     repeat(2) @(cb);
   endtask
 
@@ -80,19 +80,19 @@ interface ahb3lite_if #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32) (
   );
     // Address phase
     @(cb);
-    HTRANS = htrans;
-    HADDR = addr;
-    HWRITE = 1'b0;
-    HSIZE = hsize;
-    HBURST = hburst;
-    HPROT  = hprot;
-    HSEL  = hsel;
+    cb.HTRANS <= htrans;
+    cb.HADDR <= addr;
+    cb.HWRITE <= 1'b0;
+    cb.HSIZE <= hsize;
+    cb.HBURST <= hburst;
+    cb.HPROT <= hprot;
+    cb.HSEL  <= hsel;
     
     // Data Phase
     do @(cb); while (cb.HREADY !== 1'b1);
     repeat(3) @(cb);
-    data = HRDATA;
-    HTRANS = 2'b00;
+    data = cb.HRDATA;
+    cb.HTRANS <= 2'b00;
     repeat(2) @(cb);
   endtask
 
