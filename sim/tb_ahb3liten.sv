@@ -27,7 +27,7 @@ timeprecision 1ns;
     HRESETn = 1;
 
     // Global timout
-    #25000;
+    #100000;
     $error("[TIMEOUT] Simulation timed out");
     $finish;
   end
@@ -60,8 +60,6 @@ timeprecision 1ns;
 
    assign bus.HREADY = bus.HREADYOUT;	
 
-
   test_ahb3liten #(HADDR_SIZE, HDATA_SIZE, DEBUG) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
-
 
 endmodule

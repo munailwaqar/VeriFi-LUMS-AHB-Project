@@ -38,8 +38,26 @@ interface ahb3lite_if #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32) (
   // Master modport
   modport master (
     clocking cb,
-    import ahb_write, ahb_read
+    import reset, ahb_write, ahb_read
   );
+
+  // Reset Task
+  task reset();
+    cb.HTRANS <= '0;
+    cb.HADDR <= '0;
+    cb.HWRITE <= 0;
+    cb.HSIZE <= '0;
+    cb.HBURST <= '0;
+    cb.HPROT <= '0;
+    cb.HSEL  <= 0;
+    cb.HWDATA <= '0;
+
+    wait(HRESETn == 0);
+    repeat(5) @(cb);
+    wait(HRESETn == 1);
+    $display("[%0t] Reset Done", $time);
+  endtask
+
 
   // Write Task
   task automatic ahb_write(
@@ -97,4 +115,3 @@ interface ahb3lite_if #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32) (
   endtask
 
 endinterface
-
