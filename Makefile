@@ -20,7 +20,6 @@ compile:
 	./RUNME.sh
 clean:
 	rm -r jgproject
-clean:
 	@-rm -rf ./xcelium.d
 	@-rm -rf ./*.shm
 	@-rm ./*.log

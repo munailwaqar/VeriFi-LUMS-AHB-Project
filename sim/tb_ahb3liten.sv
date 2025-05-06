@@ -60,16 +60,26 @@ timeprecision 1ns;
 // .PROP_PORT(DUT_PORT)
 // )
 
-bind ahb3liten ahb3liten_prop #(
+bind ahb3liten:dut ahb3liten_prop #(
     .MEM_SIZE(32),
     .MEM_DEPTH(256),
     .HADDR_SIZE(HADDR_SIZE),
     .HDATA_SIZE(HDATA_SIZE)
   ) BIND_UUT(
-                .HCLK     (HCLK),
-                .HRESETn(HRESETn),
-                .HSEL(HSEL),
-                .HREADYOUT(HREADYOUT)
+                .HCLK       (HCLK),
+                .HRESETn    (HRESETn),
+                .HSEL       (HSEL),
+                .HADDR      (HADDR),
+                .HWDATA     (HWDATA),
+                .HRDATA     (HRDATA),
+                .HWRITE     (HWRITE),
+                .HSIZE      (HSIZE),
+                .HBURST     (HBURST),
+                .HPROT      (HPROT),
+                .HTRANS     (HTRANS),
+                .HREADY     (HREADY),
+                .HREADYOUT  (HREADYOUT),
+                .HRESP      (HRESP)
   );
   initial begin
     $dumpfile("waveform.vcd");
