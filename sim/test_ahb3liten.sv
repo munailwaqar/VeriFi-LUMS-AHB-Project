@@ -15,10 +15,13 @@ module test_ahb3liten #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32, DEBUG=0) (
 );
   timeunit 1ns;
   timeprecision 1ns;
+  
+  int error_count = 0;
 
-// Single transfer with word size test
+  // Single transfer with word size test
   task automatic test_word_rw(input bit DEBUG);
-    logic [HDATA_SIZE-1:0] write_data, read_data;
+    logic [HDATA_SIZE-1:0] write_data;
+    bit [HDATA_SIZE-1:0] read_data;
     if (DEBUG) $display("[%0t] Starting AHB-Lite single transfer with word size test", $time);
     
     // write and read at mem location 0
@@ -37,7 +40,14 @@ module test_ahb3liten #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32, DEBUG=0) (
     .hprot(4'b0011),
     .hsel(1'b1),
     .htrans(2'b10));
-    if (DEBUG) $display("[%0t] Addr 0x0000: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    if (DEBUG) begin
+    $display("[%0t] Addr 0x0000: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    if (read_data !== write_data) begin
+  	error_count++;
+  	$display("[%0t] Addr 0x0000: Mismatch! Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    end
+    end
+
     
     // write and read at mem location 4
     write_data = 32'hDEAD_BEEF;
@@ -55,101 +65,133 @@ module test_ahb3liten #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32, DEBUG=0) (
     .hprot(4'b0011),
     .hsel(1'b1),
     .htrans(2'b10));
-    if (DEBUG) $display("[%0t] Addr 0x0004: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    if (DEBUG) begin
+    $display("[%0t] Addr 0x0004: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    if (read_data !== write_data) begin
+  	error_count++;
+  	$display("[%0t] Addr 0x0004: Mismatch! Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    end
+   end
   endtask
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Single transfer with byte size test
+  // Single transfer with byte size test
   task automatic test_byte_rw(input bit DEBUG);
-    logic [HDATA_SIZE-1:0] write_data, read_data;
+    logic [HDATA_SIZE-1:0] write_data;
+    bit [HDATA_SIZE-1:0] read_data;
     if (DEBUG) $display("[%0t] Starting AHB-Lite single transfer with byte size test", $time);
     
-    // write and read at mem location 4
+    // write and read at mem location 8
+    write_data = 32'h0000_00AA;
+    bus.ahb_write(.addr(32'h0000_0008),
+    .data(write_data),
+    .hsize(3'b000),
+    .hburst(3'b000),
+    .hprot(4'b0011),
+    .hsel(1'b1),
+    .htrans(2'b10));    
+    bus.ahb_read(.addr(32'h0000_0008),
+    .data(read_data),
+    .hsize(3'b000),
+    .hburst(3'b000),
+    .hprot(4'b0011),
+    .hsel(1'b1),
+    .htrans(2'b10));
+    if (DEBUG) begin
+    $display("[%0t] Addr 0x0008: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    if (read_data !== write_data) begin
+  	error_count++;
+  	$display("[%0t] Addr 0x0008: Mismatch! Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    end
+    end
+
+    // write and read at mem location 9
     write_data = 32'h0000_BBAA;
-    bus.ahb_write(.addr(32'h0000_0004),
+    bus.ahb_write(.addr(32'h0000_0009),
     .data(write_data),
     .hsize(3'b000),
     .hburst(3'b000),
     .hprot(4'b0011),
     .hsel(1'b1),
     .htrans(2'b10));    
-    bus.ahb_read(.addr(32'h0000_0004),
+    bus.ahb_read(.addr(32'h0000_0009),
     .data(read_data),
     .hsize(3'b000),
     .hburst(3'b000),
     .hprot(4'b0011),
     .hsel(1'b1),
     .htrans(2'b10));
-    if (DEBUG) $display("[%0t] Addr 0x0004: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
-    
-    // write and read at mem location 5
-  //  write_data = 32'h0000_BB00;
-    bus.ahb_write(.addr(32'h0000_0005),
-    .data(write_data),
-    .hsize(3'b000),
-    .hburst(3'b000),
-    .hprot(4'b0011),
-    .hsel(1'b1),
-    .htrans(2'b10));    
-    bus.ahb_read(.addr(32'h0000_0005),
-    .data(read_data),
-    .hsize(3'b000),
-    .hburst(3'b000),
-    .hprot(4'b0011),
-    .hsel(1'b1),
-    .htrans(2'b10));
-    if (DEBUG) $display("[%0t] Addr 0x0005: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    if (DEBUG) begin
+    $display("[%0t] Addr 0x0009: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    if (read_data !== write_data) begin
+  	error_count++;
+  	$display("[%0t] Addr 0x0009: Mismatch! Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    end
+   end
   endtask
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Single transfer with halfword size test
+  // Single transfer with halfword size test
   task automatic test_halfword_rw(input bit DEBUG);
-    logic [HDATA_SIZE-1:0] write_data, read_data;
+    logic [HDATA_SIZE-1:0] write_data;
+    bit [HDATA_SIZE-1:0] read_data;
     if (DEBUG) $display("[%0t] Starting AHB-Lite single transfer with halfword size test", $time);
     
-    // write and read at mem location 0
+    // write and read at mem location 10
+    write_data = 32'h0000_BEEF;
+    bus.ahb_write(.addr(32'h0010),
+    .data(write_data),
+    .hsize(3'b001),
+    .hburst(3'b000),
+    .hprot(4'b0011),
+    .hsel(1'b1),
+    .htrans(2'b10));    
+    bus.ahb_read(.addr(32'h0010),
+    .data(read_data),
+    .hsize(3'b001),
+    .hburst(3'b000),
+    .hprot(4'b0011),
+    .hsel(1'b1),
+    .htrans(2'b10));
+    if (DEBUG) begin
+    $display("[%0t] Addr 0x0010: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    if (read_data !== write_data) begin
+  	error_count++;
+  	$display("[%0t] Addr 0x0010: Mismatch! Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    end
+    end
+
+    // write and read at mem location 12
     write_data = 32'hDEAD_BEEF;
-    bus.ahb_write(.addr(32'h0000),
+    bus.ahb_write(.addr(32'h0012),
     .data(write_data),
     .hsize(3'b001),
     .hburst(3'b000),
     .hprot(4'b0011),
     .hsel(1'b1),
     .htrans(2'b10));    
-    bus.ahb_read(.addr(32'h0000),
+    bus.ahb_read(.addr(32'h0012),
     .data(read_data),
     .hsize(3'b001),
     .hburst(3'b000),
     .hprot(4'b0011),
     .hsel(1'b1),
     .htrans(2'b10));
-    if (DEBUG) $display("[%0t] Addr 0x0000: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
-    
-    // write and read at mem location 2
-  //  write_data = 32'hDEAD_BEEF;
-    bus.ahb_write(.addr(32'h0002),
-    .data(write_data),
-    .hsize(3'b001),
-    .hburst(3'b000),
-    .hprot(4'b0011),
-    .hsel(1'b1),
-    .htrans(2'b10));    
-    bus.ahb_read(.addr(32'h0002),
-    .data(read_data),
-    .hsize(3'b001),
-    .hburst(3'b000),
-    .hprot(4'b0011),
-    .hsel(1'b1),
-    .htrans(2'b10));
-    if (DEBUG) $display("[%0t] Addr 0x0002: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    if (DEBUG) begin
+    $display("[%0t] Addr 0x0012: Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    if (read_data !== write_data) begin
+  	error_count++;
+  	$display("[%0t] Addr 0x0012: Mismatch! Wrote 0x%h, Read 0x%h", $time, write_data, read_data);
+    end
+    end
   endtask
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// INCR4 Word Burst Test
+  // INCR4 Word Burst Test
   task automatic test_incr4_word(input bit DEBUG);
     logic [HDATA_SIZE-1:0] write_data[0:3];
-    logic [HDATA_SIZE-1:0] read_data;
-    logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0000;
+    bit [HDATA_SIZE-1:0] read_data;
+    logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0020;
 
     if (DEBUG) $display("[%0t] Starting AHB-Lite INCR4 word burst test", $time);
 
@@ -169,11 +211,7 @@ module test_ahb3liten #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32, DEBUG=0) (
         .hsel(1'b1),
         .htrans(i == 0 ? 2'b10 : 2'b11)  // NONSEQ -> SEQ
       );
-      if (DEBUG) $display("[%0t] Burst Write Addr 0x%h = 0x%h", $time, base_addr + i * 4, write_data[i]);
-    end
 
-    // Read burst
-    for (int i = 0; i < 4; i++) begin
       bus.ahb_read(
         .addr(base_addr + i * 4),
         .data(read_data),
@@ -183,16 +221,21 @@ module test_ahb3liten #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32, DEBUG=0) (
         .hsel(1'b1),
         .htrans(i == 0 ? 2'b10 : 2'b11)  // NONSEQ -> SEQ
       );
-      if (DEBUG)
-        $display("[%0t] Burst Read Addr 0x%h = 0x%h", $time, base_addr + i * 4, read_data);
+      if (DEBUG) begin
+       $display("[%0t] Burst Write Addr 0x%h = 0x%h, Read = 0x%h", $time, base_addr + i * 4, write_data[i], read_data);
+      if (read_data !== write_data[i]) begin
+      	$error("[%0t] Mismatch at Addr 0x%h: Expected 0x%h, Got 0x%h", $time, base_addr + i * 4, write_data[i], read_data);
+      	error_count++;
+      end
+     end
     end
   endtask
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// WRAP4 Word Burst Test
+   // WRAP4 Word Burst Test
   task automatic test_wrap4_word(input bit DEBUG);
-    logic [HDATA_SIZE-1:0] write_data[0:4];
-    logic [HDATA_SIZE-1:0] read_data;
+    logic [HDATA_SIZE-1:0] write_data[0:5];
+    bit [HDATA_SIZE-1:0] read_data;
     logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0034;
     logic [HADDR_SIZE-1:0] wrap_addr;
 
@@ -205,7 +248,7 @@ module test_ahb3liten #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32, DEBUG=0) (
     write_data[4] = 32'hEEEE_4444;
 
     // Write phase
-    for (int i = 0; i < 5; i++) begin
+    for (int i = 0; i < 4; i++) begin
       wrap_addr = calc_wrap_addr(base_addr, 3'b010, 3'b010, i);
       bus.ahb_write(
         .addr(wrap_addr),
@@ -216,14 +259,7 @@ module test_ahb3liten #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32, DEBUG=0) (
         .hsel(1'b1),
         .htrans(i == 0 ? 2'b10 : 2'b11)
       );
-      if (DEBUG)
-        $display("[%0t] WRAP4 Write (logical beat %0d) to Addr 0x%08h = 0x%08h",
-                 $time, i, wrap_addr, write_data[i]);
-    end
 
-    // Read phase
-    for (int i = 0; i < 4; i++) begin
-      wrap_addr = calc_wrap_addr(base_addr, 3'b010, 3'b010, i);
       bus.ahb_read(
         .addr(wrap_addr),
         .data(read_data),
@@ -233,8 +269,13 @@ module test_ahb3liten #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32, DEBUG=0) (
         .hsel(1'b1),
         .htrans(i == 0 ? 2'b10 : 2'b11)
       );
-      if (DEBUG)
-        $display("[%0t] WRAP4 Read Addr 0x%08h = 0x%08h", $time, wrap_addr, read_data);
+      if (DEBUG) begin
+       $display("[%0t] WRAP4 Write (logical beat %0d) to Addr 0x%08h = 0x%08h, Read = 0x%08h", $time, i, wrap_addr, write_data[i], read_data);
+      if (read_data !== write_data[i]) begin
+      	$error("[%0t] Mismatch at Addr 0x%h: Expected 0x%h, Got 0x%h", $time, wrap_addr, write_data[i], read_data);
+      	error_count++;
+      end
+      end
     end
   endtask
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -242,9 +283,12 @@ module test_ahb3liten #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32, DEBUG=0) (
 // INCR8 Byte Burst Test
 task automatic test_incr8_byte(input bit DEBUG);
   logic [HDATA_SIZE-1:0] write_data[0:8];
-  logic [HDATA_SIZE-1:0] read_data;
-  logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0000;
+    bit [HDATA_SIZE-1:0] read_data;
+  logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0050;
   logic [HADDR_SIZE-1:0] incr_addr;
+byte expected_byte, read_byte;
+logic [1:0] byte_lane;
+
 
   if (DEBUG) $display("[%0t] Starting AHB-Lite INCR8 byte burst test", $time);
 
@@ -270,14 +314,7 @@ task automatic test_incr8_byte(input bit DEBUG);
       .hsel(1'b1),
       .htrans(i == 0 ? 2'b10 : 2'b11)
     );
-    if (DEBUG)
-      $display("[%0t] INCR8 Write (beat %0d) to Addr 0x%h = 0x%h", 
-                $time, i, incr_addr, write_data[i]);
-  end
 
-  // Read phase
-  for (int i = 0; i < 9; i++) begin
-    incr_addr = base_addr + i;
     bus.ahb_read(
       .addr(incr_addr),
       .data(read_data),
@@ -287,20 +324,46 @@ task automatic test_incr8_byte(input bit DEBUG);
       .hsel(1'b1),
       .htrans(i == 0 ? 2'b10 : 2'b11)
     );
-    if (DEBUG)
-      $display("[%0t] INCR8 Read  (beat %0d) from Addr 0x%h = 0x%h", 
-                $time, i, incr_addr, read_data);
+    byte_lane = incr_addr[1:0];
+    unique case (byte_lane)
+      2'b00: begin
+        read_byte     = read_data[7:0];
+        expected_byte = write_data[i][7:0];
+      end
+      2'b01: begin
+        read_byte     = read_data[15:8];
+        expected_byte = write_data[i][15:8];
+      end
+      2'b10: begin
+        read_byte     = read_data[23:16];
+        expected_byte = write_data[i][23:16];
+      end
+      2'b11: begin
+        read_byte     = read_data[31:24];
+        expected_byte = write_data[i][31:24];
+      end
+    endcase
+
+    if (DEBUG) begin
+      $display("[%0t] INCR8 Write (beat %0d) to Addr 0x%h = 0x%h, Read = 0x%h", $time, i, incr_addr, expected_byte, read_byte);
+      if (read_byte !== expected_byte) begin
+        $error("[%0t] Mismatch at Addr 0x%h: Expected 0x%02h, Got 0x%02h", $time, incr_addr, expected_byte, read_byte);
+        error_count++;
+      end
+    end
+
   end
 endtask
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// WRAP8 Byte Burst Test
+  // WRAP8 Byte Burst Test
   task automatic test_wrap8_byte(input bit DEBUG);
     logic [HDATA_SIZE-1:0] write_data[0:8];
-    logic [HDATA_SIZE-1:0] read_data;
-    logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0000;
+    bit [HDATA_SIZE-1:0] read_data;
+    logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0060;
     logic [HADDR_SIZE-1:0] wrap_addr;
+byte expected_byte, read_byte;
+logic [1:0] byte_lane;
 
     if (DEBUG) $display("[%0t] Starting AHB-Lite WRAP8 byte burst test", $time);
 
@@ -326,14 +389,7 @@ endtask
         .hsel(1'b1),
         .htrans(i == 0 ? 2'b10 : 2'b11)
       );
-      if (DEBUG)
-        $display("[%0t] WRAP8 Write (beat %0d) to Addr 0x%h = 0x%h", 
-                  $time, i, wrap_addr, write_data[i]);
-    end
 
-    // Read phase
-    for (int i = 0; i < 9; i++) begin
-      wrap_addr = calc_wrap_addr(base_addr, 3'b000, 3'b100, i);
       bus.ahb_read(
         .addr(wrap_addr),
         .data(read_data),
@@ -343,9 +399,33 @@ endtask
         .hsel(1'b1),
         .htrans(i == 0 ? 2'b10 : 2'b11)
       );
-      if (DEBUG)
-        $display("[%0t] WRAP8 Read  (beat %0d) from Addr 0x%h = 0x%h", 
-                  $time, i, wrap_addr, read_data);
+      byte_lane = wrap_addr[1:0];
+      unique case (byte_lane)
+      2'b00: begin
+        read_byte     = read_data[7:0];
+        expected_byte = write_data[i][7:0];
+      end
+      2'b01: begin
+        read_byte     = read_data[15:8];
+        expected_byte = write_data[i][15:8];
+      end
+      2'b10: begin
+        read_byte     = read_data[23:16];
+        expected_byte = write_data[i][23:16];
+      end
+      2'b11: begin
+        read_byte     = read_data[31:24];
+        expected_byte = write_data[i][31:24];
+      end
+    endcase
+
+    if (DEBUG) begin 
+      $display("[%0t] WRAP8 Write (beat %0d) to Addr 0x%h = 0x%h, Read = Byte 0x%02h", $time, i, wrap_addr, expected_byte, read_byte);
+    if (read_byte !== expected_byte) begin
+      $error("[%0t] Mismatch at Addr 0x%h: Expected 0x%02h, Got 0x%02h", $time, wrap_addr, expected_byte, read_byte);
+      error_count++;
+    end
+    end
     end
   endtask
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -353,9 +433,11 @@ endtask
 // INCR16 Halfword Burst Test
 task automatic test_incr16_halfword(input bit DEBUG);
   logic [HDATA_SIZE-1:0] write_data[0:16];
-  logic [HDATA_SIZE-1:0] read_data;
-  logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0000;
+    bit [HDATA_SIZE-1:0] read_data;
+  logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0070;
   logic [HADDR_SIZE-1:0] incr_addr;
+      logic [15:0] halfword;
+  logic [31:0] zero_ext_halfword;
 
   if (DEBUG) $display("[%0t] Starting AHB-Lite INCR16 halfword burst test", $time);
 
@@ -393,14 +475,7 @@ task automatic test_incr16_halfword(input bit DEBUG);
       .hsel(1'b1),
       .htrans(i == 0 ? 2'b10 : 2'b11)
     );
-    if (DEBUG)
-      $display("[%0t] INCR16 Write (beat %0d) to Addr 0x%h = 0x%h",
-               $time, i, incr_addr, write_data[i]);
-  end
 
-  // Read phase
-  for (int i = 0; i < 16; i++) begin
-    incr_addr = base_addr + (i * 2); // Halfword = 2 bytes
     bus.ahb_read(
       .addr(incr_addr),
       .data(read_data),
@@ -410,19 +485,32 @@ task automatic test_incr16_halfword(input bit DEBUG);
       .hsel(1'b1),
       .htrans(i == 0 ? 2'b10 : 2'b11)
     );
-    if (DEBUG)
-      $display("[%0t] INCR16 Read Addr 0x%h = 0x%h", $time, incr_addr, read_data);
+     if (incr_addr[1] == 1'b0) begin
+      halfword = read_data[15:0];
+      zero_ext_halfword = {16'h0000, halfword};
+    end else begin
+      halfword = read_data[31:16];
+      zero_ext_halfword = {halfword, 16'h0000};
+    end
+    if (DEBUG) begin
+      $display("[%0t] INCR16 Write (beat %0d) to Addr 0x%h = 0x%h, Read = 0x%h", $time, i, incr_addr, write_data[i], zero_ext_halfword);
+      if (zero_ext_halfword !== write_data[i]) begin
+   	$error("[%0t] Mismatch at Addr 0x%h: Expected 0x%h, Got 0x%h", $time, incr_addr, write_data[i], zero_ext_halfword);
+      	error_count++;
+      end
+    end
   end
 endtask
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 // WRAP16 Halfword Burst Test
 task automatic test_wrap16_halfword(input bit DEBUG);
   logic [HDATA_SIZE-1:0] write_data[0:16];
-  logic [HDATA_SIZE-1:0] read_data;
-  logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0000;
+    bit [HDATA_SIZE-1:0] read_data;
+  logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0080;
   logic [HADDR_SIZE-1:0] wrap_addr;
+      logic [15:0] halfword;
+  logic [31:0] zero_ext_halfword;
 
   if (DEBUG) $display("[%0t] Starting AHB-Lite WRAP16 halfword burst test", $time);
 
@@ -460,14 +548,7 @@ task automatic test_wrap16_halfword(input bit DEBUG);
       .hsel(1'b1),
       .htrans(i == 0 ? 2'b10 : 2'b11)
     );
-    if (DEBUG)
-      $display("[%0t] WRAP16 Write (logical beat %0d) to Addr 0x%h = 0x%h",
-               $time, i, wrap_addr, write_data[i]);
-  end
 
-  // Read phase
-  for (int i = 0; i < 16; i++) begin
-    wrap_addr = calc_wrap_addr(base_addr, 3'b001, 3'b110, i);
     bus.ahb_read(
       .addr(wrap_addr),
       .data(read_data),
@@ -477,17 +558,28 @@ task automatic test_wrap16_halfword(input bit DEBUG);
       .hsel(1'b1),
       .htrans(i == 0 ? 2'b10 : 2'b11)
     );
-    if (DEBUG)
-      $display("[%0t] WRAP16 Read Addr 0x%h = 0x%h", $time, wrap_addr, read_data);
+     if (wrap_addr[1] == 1'b0) begin
+      halfword = read_data[15:0];
+      zero_ext_halfword = {16'h0000, halfword};
+    end else begin
+      halfword = read_data[31:16];
+      zero_ext_halfword = {halfword, 16'h0000};
+    end
+    if (DEBUG) begin
+     $display("[%0t] WRAP16 Write (logical beat %0d) to Addr 0x%h = 0x%h, Read = 0x%h", $time, i, wrap_addr, write_data[i], zero_ext_halfword);
+      if (zero_ext_halfword !== write_data[i]) begin
+   	$error("[%0t] Mismatch at Addr 0x%h: Expected 0x%h, Got 0x%h", $time, wrap_addr, write_data[i], zero_ext_halfword);
+      	error_count++;
+      end
+    end
   end
 endtask
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 // BONUS TEST!!!
 task automatic test_incr4_word_busy(input bit DEBUG);
   logic [HDATA_SIZE-1:0] write_data[0:3];
-  logic [HDATA_SIZE-1:0] read_data;
-  logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0000;
+    bit [HDATA_SIZE-1:0] read_data;
+  logic [HADDR_SIZE-1:0] base_addr = 32'h0000_0100;
   int beat_idx = 0;
 
   if (DEBUG) $display("[%0t] Starting AHB-Lite INCR4 word burst test with BUSY", $time);
@@ -523,7 +615,7 @@ task automatic test_incr4_word_busy(input bit DEBUG);
   end
 
    // Read burst
-    for (int i = 0; i < 4; i++) begin
+   for (int i = 0; i < 4; i++) begin
       bus.ahb_read(
         .addr(base_addr + i * 4),
         .data(read_data),
@@ -533,29 +625,39 @@ task automatic test_incr4_word_busy(input bit DEBUG);
         .hsel(1'b1),
         .htrans(i == 0 ? 2'b10 : 2'b11)  // NONSEQ -> SEQ
       );
-      if (DEBUG)
-        $display("[%0t] Burst Read Addr 0x%h = 0x%h", $time, base_addr + i * 4, read_data);
+      if (DEBUG) begin
+       $display("[%0t] Read Addr 0x%h = Read = 0x%h", $time, base_addr + i * 4, read_data);
+      if (read_data !== write_data[i]) begin
+      	$error("[%0t] Mismatch at Addr 0x%h: Expected 0x%h, Got 0x%h", $time, base_addr + i * 4, write_data[i], read_data);
+      	error_count++;
+      end
+      end
     end
 endtask
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
   initial begin
-    wait(HRESETn);
+    bus.reset();
     repeat(2) @(posedge HCLK);
     
   // UNCOMMENT THE RELEVANT TEST
 
     test_word_rw(DEBUG);
-  //  test_byte_rw(DEBUG);
-  //  test_halfword_rw(DEBUG);
-  //  test_incr4_word(DEBUG);
-  //  test_wrap4_word(DEBUG);
- //  test_incr8_byte(DEBUG);
-  //  test_wrap8_byte(DEBUG);
-  //  test_incr16_halfword(DEBUG);
-  //  test_wrap16_halfword(DEBUG);
-  //   test_incr4_word_busy(DEBUG);
+    test_byte_rw(DEBUG);
+    test_halfword_rw(DEBUG);
+    test_incr4_word(DEBUG);
+    test_wrap4_word(DEBUG);
+    test_incr8_byte(DEBUG);
+    test_wrap8_byte(DEBUG);
+    test_incr16_halfword(DEBUG);
+    test_wrap16_halfword(DEBUG);
+    test_incr4_word_busy(DEBUG);
     
+    if (DEBUG) begin
+  	if (error_count == 0)
+    		$display("[%0t] All tests PASSED with 0 errors", $time);
+  	else
+    		$display("[%0t] Tests FAILED with %0d errors", $time, error_count);
+    end
     $finish;
   end
 
@@ -586,5 +688,5 @@ begin
   return (start_addr & ~(wrap_boundary - 1)) + offset;
 end
 endfunction
-endmodule
 
+endmodule
