@@ -19,3 +19,10 @@ help:
 	@echo "gui       ##Simulate with gui"
 	@echo "clean     ##Remove all generated files"
 	@echo "help      ##Print all available targets"
+code_coverage:
+	xrun -f $(FLIST)-access +rwc -covdut ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
+	imc -load cov_work/scope/test/
+
+functional_coverage:
+	xrun -f $(FLIST) -access +rwc -covdut ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
+	imc -load cov_work/scope/test/
