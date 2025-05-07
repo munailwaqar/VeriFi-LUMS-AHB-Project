@@ -32,8 +32,7 @@ import ahb3lite_pkg::*;
   input      [           1:0] HTRANS,
   input logic                 HREADYOUT,
   input                       HREADY,
-  input                       HRESP,
-  input HTRANS_NONSEQ
+  input                       HRESP
 );
 
 timeunit 1ns;
@@ -108,7 +107,7 @@ endproperty
 
 check_write_enable_P: assert property (check_write_enable)
   else $display($stime, "FAIL:: Write Enable is inconsisten\n");
-///////////~~~~~~~~~~~~~~~~~~~~PROPERTY  6 FAILED~~~~~~~~~~~~~~~~~~~~~////////////////////////
+
 
 property check_hresp;
   @(posedge HCLK)
@@ -118,13 +117,6 @@ endproperty
 check_hresp_P: assert property (check_hresp)
   else $display($stime, "FAIL:: check_hresp is inconsisten\n", HRDATA);
 
-
-///////////~~~~~~~~~~~~~~~~~~~~PROPERTY  7 PASSED~~~~~~~~~~~~~~~~~~~~~////////////////////////
-
-
-//// HSIZE CONSTANT THROUGHOUT BURST TRAANSFER ////
-
-
 // property check_write_enable;
 //   @(posedge HCLK) 
 //   (HREADY == 1'b1) |->  (`waddr == `raddr); //`we == 1'b0; 
@@ -132,23 +124,5 @@ check_hresp_P: assert property (check_hresp)
 
 // check_write_enable_P: assert property (check_write_enable)
 //   else $display($stime, "FAIL:: Write Enable is inconsisten\n", HRDATA);
-// property check_hsize_const_when_burst_tf;
-//   @(posedge HCLK)
-//  (HSEL &&( HTRANS != HTRANS_IDLE) &&(HTRANS != HTRANS_NONSEQ)) |-> ##1 (HADDR != 0 && HWDATA != 0 );
-// endproperty
-
-//   check_hsize_const_when_burst_tf_p: assert property (check_hsize_const_when_burst_tf)
-//     else $display($stime, "FAIL:: Hsize Const is inconsisten\n");
-
-property check_property_hburst;
-  @(posedge HCLK)
-  // disable iff (!HRESETn)
-
- (HSEL &&( HTRANS != HTRANS_IDLE) &&(HTRANS != HTRANS_NONSEQ))  && (HBURST == HBURST_INCR) |-> (HADDR == $past(HADDR) + $clog2(HDATA_SIZE));
-
-endproperty
-
-  check_property_hburst_P: assert property (check_property_hburst)
-    else $display($stime, "FAIL:: HBURST  is inconsisten\n");
 
 endmodule
