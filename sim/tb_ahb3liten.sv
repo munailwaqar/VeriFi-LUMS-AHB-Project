@@ -1,26 +1,38 @@
-`define HREADYOUT 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// (c) Copyright 2025 VeriFi-LUMS-AHB-Project. All Rights Reserved.
+//
+// File name : tb_ahb3liten.sv
+// Title : tb_ahb3liten
+// Description : Top module
+// Notes :
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 module tb_ahb3liten;
 timeunit 1ns;
 timeprecision 1ns;
 
-
-
   parameter HADDR_SIZE = 32;
   parameter HDATA_SIZE = 32;
+  parameter DEBUG = 1;
 
-  logic HCLK ;
+  logic HCLK;
   logic HRESETn;
 
-  wire HREADYOUT;
-`ifdef include_clk
+  `ifdef include_clk
 
  always #5 HCLK = ~HCLK;
 `endif
 
   initial begin
+    HCLK = 0;
     HRESETn = 0;
     #20;
     HRESETn = 1;
+
+    // Global timout
+    #100000;
+    $error("[TIMEOUT] Simulation timed out");
+    $finish;
   end
 
   // interface
@@ -51,14 +63,8 @@ timeprecision 1ns;
 
    assign bus.HREADY = bus.HREADYOUT;	
 
-  // 1). basic write and read test --> word transer, single burst, NONSEQ
-  ahb3lite_test #(HADDR_SIZE, HDATA_SIZE) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
+  test_ahb3liten #(HADDR_SIZE, HDATA_SIZE, DEBUG) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
 
-
-///use the binding 
-// bind dut_mod prop_mod (
-// .PROP_PORT(DUT_PORT)
-// )
 
 bind ahb3liten:dut ahb3liten_prop #(
     .MEM_SIZE(32),
@@ -81,9 +87,4 @@ bind ahb3liten:dut ahb3liten_prop #(
                 .HREADYOUT  (HREADYOUT),
                 .HRESP      (HRESP)
   );
-  initial begin
-    $dumpfile("waveform.vcd");
-    $dumpvars(0, tb_ahb3liten);
-  end
-
 endmodule
