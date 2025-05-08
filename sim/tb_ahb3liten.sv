@@ -18,10 +18,14 @@ timeprecision 1ns;
   logic HCLK;
   logic HRESETn;
 
+
   `ifdef include_clk
 
  always #5 HCLK = ~HCLK;
 `endif
+
+
+
 
   initial begin
     HCLK = 0;
@@ -66,6 +70,7 @@ timeprecision 1ns;
   test_ahb3liten #(HADDR_SIZE, HDATA_SIZE, DEBUG) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
 
 
+
 bind ahb3liten:dut ahb3liten_prop #(
     .MEM_SIZE(32),
     .MEM_DEPTH(256),
@@ -87,4 +92,6 @@ bind ahb3liten:dut ahb3liten_prop #(
                 .HREADYOUT  (HREADYOUT),
                 .HRESP      (HRESP)
   );
+
+
 endmodule
