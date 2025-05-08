@@ -1,3 +1,4 @@
+
 FLIST="-f ./flist.f"
 BASICFLAGS="-access +rwc -sv -disable_sem2009 -clean"
 GUI="-gui"
@@ -28,6 +29,7 @@ clean:
 	@-rm -rf ./.simvision
 	@-rm qalog.txt
 	@-clear
+
 
 help:
 	@echo "Available targets:"
