@@ -6,3 +6,4 @@
 
 ./src/design.sv
 ./src/mem.sv
+./sim/coverage_module.sv
