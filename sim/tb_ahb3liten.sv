@@ -61,10 +61,7 @@ timeprecision 1ns;
    assign bus.HREADY = bus.HREADYOUT;	
 
   test_ahb3liten #(HADDR_SIZE, HDATA_SIZE, DEBUG) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
-//interface 2
-  ahb3lite_if #(HADDR_SIZE, HDATA_SIZE) bus1(HCLK, HRESETn);
-
-//Binding coverage module 
-bind dut coverage_module cm(bus1.master);
+//coverage module instantiation
+  coverage_module cov_insta (.HCLK(HCLK), .HRESETn(HRESETn), .bus1(bus));
 
 endmodule
