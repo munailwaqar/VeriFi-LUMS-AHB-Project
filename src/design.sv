@@ -75,7 +75,7 @@ timeprecision 1ns;
 
     //default value, prevent warnings
     address_offset = 0;
-	 
+   
     //What are the lesser bits in HADDR?
     case (HDATA_SIZE)
           1024: address_offset = 7'b111_1111; 

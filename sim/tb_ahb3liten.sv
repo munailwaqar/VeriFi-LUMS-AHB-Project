@@ -18,7 +18,15 @@ timeprecision 1ns;
   logic HCLK;
   logic HRESETn;
 
-  always #5 HCLK = ~HCLK;
+
+
+  `ifdef include_clk
+
+ always #5 HCLK = ~HCLK;
+`endif
+
+
+
 
   initial begin
     HCLK = 0;
@@ -63,5 +71,31 @@ timeprecision 1ns;
   test_ahb3liten #(HADDR_SIZE, HDATA_SIZE, DEBUG) test (.HCLK(HCLK), .HRESETn(HRESETn), .bus(bus));
 //coverage module instantiation
   coverage_module cov_insta (.HCLK(HCLK), .HRESETn(HRESETn), .bus1(bus));
+
+
+
+bind ahb3liten:dut ahb3liten_prop #(
+    .MEM_SIZE(32),
+    .MEM_DEPTH(256),
+    .HADDR_SIZE(HADDR_SIZE),
+    .HDATA_SIZE(HDATA_SIZE)
+  ) BIND_UUT(
+                .HCLK       (HCLK),
+                .HRESETn    (HRESETn),
+                .HSEL       (HSEL),
+                .HADDR      (HADDR),
+                .HWDATA     (HWDATA),
+                .HRDATA     (HRDATA),
+                .HWRITE     (HWRITE),
+                .HSIZE      (HSIZE),
+                .HBURST     (HBURST),
+                .HPROT      (HPROT),
+                .HTRANS     (HTRANS),
+                .HREADY     (HREADY),
+                .HREADYOUT  (HREADYOUT),
+                .HRESP      (HRESP)
+  );
+
+
 
 endmodule
