@@ -11,7 +11,7 @@ gui:
 	xrun -f $(FLIST) -top tb_ahb3liten -access +rwc -gui
 
 clean:
-	rm -rf xrun* waves.shm .simvision xcelium.d xcelium.shm INCA* *.log *.key *.vcd
+	rm -rf xrun* waves.shm .simvision xcelium.d xcelium.shm INCA* *.log *.key *.vcd cov_work 
 
 help:
 	@echo "Available targets:"
@@ -19,3 +19,10 @@ help:
 	@echo "gui       ##Simulate with gui"
 	@echo "clean     ##Remove all generated files"
 	@echo "help      ##Print all available targets"
+code_coverage:
+	xrun -f $(FLIST)-access +rwc -covdut ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
+	imc -load cov_work/scope/test/
+
+functional_coverage:
+	xrun -f $(FLIST) -access +rwc -covdut ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
+	imc -load cov_work/scope/test/
