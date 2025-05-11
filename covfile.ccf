@@ -1,0 +1,8 @@
+set_covergroup -new_instance_reporting
+set_expr_coverable_operators -all
+set_expr_coverable_statements -all
+set_assign_scoring
+set_branch_scoring
+set_expr_scoring -all
+set_explicit_block_scoring -on
+set_implicit_block_scoring -on

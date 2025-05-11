@@ -37,6 +37,8 @@ interface ahb3lite_if #(parameter HADDR_SIZE = 32, HDATA_SIZE = 32) (
 
   // Master modport
   modport master (
+    output HSEL, HADDR, HWDATA, HWRITE, HSIZE, HBURST, HPROT, HTRANS,
+    input HRDATA, HREADYOUT, HRESP, HREADY,
     clocking cb,
     import reset, ahb_write, ahb_read
   );
