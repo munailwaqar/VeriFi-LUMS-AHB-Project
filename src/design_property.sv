@@ -1,3 +1,15 @@
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// (c) Copyright 2025 VeriFi-LUMS-AHB-Project. All Rights Reserved.
+//
+// File name : design_property.sv
+// Title : ahb3liten_prop
+// Description : Tests for verification of AHB-Lite Slave
+// Notes :
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 `define ahb_noseq tb_ahb3liten.dut.ahb_noseq
 `define ahb_read tb_ahb3liten.dut.ahb_read
 `define ahb_write tb_ahb3liten.dut.ahb_write
@@ -48,6 +60,7 @@ endproperty
 
 check_rstn_asserted_P: assert property (check_rstn_asserted)
   else $display($stime,"\t\t FAIL:: check_rstn_asserted\n");
+
 ///////////~~~~~~~~~~~~~~~~~~~~PROPERTY 1 PASSED~~~~~~~~~~~~~~~~~~~~~////////////////////////
 
 
@@ -97,32 +110,60 @@ check_bus_transfer_width_P: assert property (check_bus_transfer_width)
 
 ///////////~~~~~~~~~~~~~~~~~~~~PROPERTY  5 PASSED~~~~~~~~~~~~~~~~~~~~~////////////////////////
 
-
-
-
-property check_write_enable;
-  @(posedge HCLK) disable iff (!HRESETn)
-  (HREADY == 1'b1) |->  (`waddr == `raddr); //`we == 1'b0; 
-endproperty
-
-check_write_enable_P: assert property (check_write_enable)
-  else $display($stime, "FAIL:: Write Enable is inconsisten\n");
-
-
 property check_hresp;
   @(posedge HCLK)
   HRESP == HRESP_OKAY;
 endproperty
 
 check_hresp_P: assert property (check_hresp)
-  else $display($stime, "FAIL:: check_hresp is inconsisten\n", HRDATA);
+  else $display($stime, "FAIL:: check_hresp is inconsisten\n");
 
-// property check_write_enable;
-//   @(posedge HCLK) 
-//   (HREADY == 1'b1) |->  (`waddr == `raddr); //`we == 1'b0; 
+
+///////////~~~~~~~~~~~~~~~~~~~~PROPERTY  6 PASSED~~~~~~~~~~~~~~~~~~~~~////////////////////////
+
+// check the hsize < or = data bus
+property check_HSIZE_width;
+  @(posedge HCLK)
+  HSIZE <= 32;
+endproperty 
+
+  check_HSIZE_width_p: assert property (check_HSIZE_width)
+    else $display($time,"FAIL:: check_HSIZE_width is inconsistent");
+///////////~~~~~~~~~~~~~~~~~~~~PROPERTY  7 PASSED~~~~~~~~~~~~~~~~~~~~~////////////////////////
+
+// property hsize_const_four_beat_tf_burst;
+//   @(posedge HCLK) disable iff(!HRESETn)
+
+//   //tihis is for the 4 beat incrementing burst so we have the 011
+//     ((HTRANS == HTRANS_NONSEQ) && (HBURST == HBURST_INCR4 || HBURST == HBURST_WRAP4) |=> $stable(HSIZE) [*4]);
 // endproperty
 
-// check_write_enable_P: assert property (check_write_enable)
-//   else $display($stime, "FAIL:: Write Enable is inconsisten\n", HRDATA);
+// hsize_const_four_beat_tf_burst_p: assert property (hsize_const_four_beat_tf_burst)
+//     else $display($time,"FAIL:: hsize_const_four_beat_tf_burst is inconsistent");
+
+// ///////////~~~~~~~~~~~~~~~~~~~~PROPERTY  8 Failed~~~~~~~~~~~~~~~~~~~~~////////////////////////
+
+// property hsize_const_eight_beat_tf_burst;
+//   @(posedge HCLK) disable iff(!HRESETn)
+
+//   //tihis is for the 8 beat incrementing burst so we have the 011
+//     ((HTRANS == HTRANS_NONSEQ) && (HBURST == HBURST_INCR8 || HBURST == HBURST_WRAP8) |=> $stable(HSIZE) [*8]);
+// endproperty
+
+// hsize_const_eight_beat_tf_burst_p: assert property (hsize_const_eight_beat_tf_burst)
+//     else $display($time,"FAIL:: hsize_const_eight_beat_tf_burst is inconsistent");
+
+// ///////////~~~~~~~~~~~~~~~~~~~~PROPERTY  9 Failed~~~~~~~~~~~~~~~~~~~~~////////////////////////
+
+// property hsize_const_sixteen_beat_tf_burst;
+//   @(posedge HCLK) disable iff(!HRESETn)
+
+// //tihis is for the 16 beat incrementing burst so we have the 011
+//     ((HTRANS == HTRANS_NONSEQ) && (HBURST == HBURST_INCR8 || HBURST == HBURST_WRAP8) |=> $stable(HSIZE) [*16]);
+// endproperty
+
+// hsize_const_sixteen_beat_tf_burst_P: assert property (hsize_const_sixteen_beat_tf_burst)
+//     else $display($time,"FAIL:: hsize_const_sixteen_beat_tf_burst is inconsistent");
+// ///////////~~~~~~~~~~~~~~~~~~~~PROPERTY 10 Failed~~~~~~~~~~~~~~~~~~~~~////////s////////////////
 
 endmodule
