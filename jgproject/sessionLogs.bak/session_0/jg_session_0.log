@@ -1,0 +1,153 @@
+# ----------------------------------------
+# Jasper Version Info
+# tool      : Jasper 2022.06
+# platform  : Linux 3.10.0-1160.114.2.el7.x86_64
+# version   : 2022.06 FCS 64 bits
+# build date: 2022.06.22 13:46:24 UTC
+# ----------------------------------------
+# started   : 2025-05-12 13:14:43 PKT
+# hostname  : pc4.(none)
+# pid       : 29880
+# arguments : '-label' 'session_0' '-console' '//127.0.0.1:37119' '-style' 'windows' '-data' 'AAAAnnicY2RgYLCp////PwMYMFcBCQEGHwZfhiAGVyDpzxAGpBkYvBhMGYwYLBgMGBwYkhkSGVIYUhnygKxUhmIgLmIoA5NWRKkCA8YHEJrBhhHEA2I+oFQpULkeQwlQSw5IDgAXSBf3' '-proj' '/home/ee5214s1m4/main/VeriFi-LUMS-AHB-Project/jgproject/sessionLogs/session_0' '-init' '-hidden' '/home/ee5214s1m4/main/VeriFi-LUMS-AHB-Project/jgproject/.tmp/.initCmds.tcl' 'run.tcl'
+
+Any disclosure about the Cadence Design Systems software or its use
+model to any third party violates the written Non-Disclosure Agreement
+between Cadence Design Systems, Inc. and the customer.
+
+THIS SOFTWARE CONTAINS CONFIDENTIAL INFORMATION AND TRADE SECRETS OF
+CADENCE DESIGN SYSTEMS, INC. USE, DISCLOSURE, OR REPRODUCTION IS
+PROHIBITED WITHOUT THE PRIOR EXPRESS WRITTEN PERMISSION OF CADENCE
+DESIGN SYSTEMS, INC.
+
+Copyright (C) 2000-2022 Cadence Design Systems, Inc. All Rights
+Reserved.  Unpublished -- rights reserved under the copyright laws of
+the United States.
+
+This product includes software developed by others and redistributed
+according to license agreement. See doc/third_party_readme.txt for
+further details.
+
+RESTRICTED RIGHTS LEGEND
+
+Use, duplication, or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c) (1) (ii) of the Rights in
+Technical Data and Computer Software clause at DFARS 252.227-7013 or
+subparagraphs (c) (1) and (2) of Commercial Computer Software -- Restricted
+Rights at 48 CFR 52.227-19, as applicable.
+
+
+                          Cadence Design Systems, Inc.
+                          2655 Seely Avenue
+                          San Jose, CA 95134
+                          Phone: 408.943.1234
+
+For technical assistance visit http://support.cadence.com.
+
+Jasper Apps Analysis Session - /home/ee5214s1m4/main/VeriFi-LUMS-AHB-Project/jgproject/sessionLogs/session_0
+
+INFO (IPL017): The host machine is running out of memory.
+    This message was triggered because the system reached 10% memory.
+    System memory use information:
+    [Process]
+        Memory In Use: 322608 kB (4%)
+        Peak Memory Usage: 322608 kB (4%)
+    [Host]
+        Available Memory: 729540 kB (9%)
+        Total Memory: 7842124 kB
+        Free Swap: 3394276 kB (41%)
+        Total Swap: 8126460 kB
+INFO: successfully checked out licenses "jasper_pint" and "jasper_papp".
+INFO: reading configuration file "/home/ee5214s1m4/.config/cadence/jasper.conf".
+% clear -all
+INFO (IPF121): Cleared environment completely for new design analysis.
+% analyze -sv09 -f flist.f
+INFO (INL011): Processing "-f" file "/home/ee5214s1m4/main/VeriFi-LUMS-AHB-Project/flist.f".
+[-- (VERI-1482)] Analyzing Verilog file '/mnt/cadence_tools/installs/JASPER22/jasper_2022.06/lib/verilog/packages/std/std.sv' into library 'std'
+[-- (VERI-1482)] Analyzing Verilog file './include/ahb3lite_pkg.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_if.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/test_ahb3liten.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/tb_ahb3liten.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/coverage_module.sv'
+[WARN (VERI-1672)] ./sim/coverage_module.sv(36): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(36): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(69): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(69): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(85): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(85): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(90): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(90): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(95): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(119): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(119): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(124): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(124): hierarchical name cannot be in an identifier list
+[-- (VERI-1482)] Analyzing Verilog file './src/design.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/mem.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/design_property.sv'
+[ERROR (VERI-9011)] ./src/design_property.sv(136): block id 'check_hresp_P' is already declared
+[INFO (VERI-1967)] ./src/design_property.sv(118): previous declaration of 'check_hresp_P' is from here
+[ERROR (VERI-1116)] ./src/design_property.sv(142): 'check_HSIZE_width' is already declared
+[INFO (VERI-1967)] ./src/design_property.sv(125): previous declaration of 'check_HSIZE_width' is from here
+[ERROR (VERI-9011)] ./src/design_property.sv(148): block id 'check_HSIZE_width_p' is already declared
+[INFO (VERI-1967)] ./src/design_property.sv(130): previous declaration of 'check_HSIZE_width_p' is from here
+[ERROR (VERI-1072)] ./src/design_property.sv(187): module 'ahb3liten_prop' is ignored due to previous errors
+Summary of errors detected:
+	[ERROR (VERI-9011)] ./src/design_property.sv(136): block id 'check_hresp_P' is already declared
+	[ERROR (VERI-1116)] ./src/design_property.sv(142): 'check_HSIZE_width' is already declared
+	[ERROR (VERI-9011)] ./src/design_property.sv(148): block id 'check_HSIZE_width_p' is already declared
+	[ERROR (VERI-1072)] ./src/design_property.sv(187): module 'ahb3liten_prop' is ignored due to previous errors
+ERROR (ENL034): 4 errors detected in the design file(s).
+
+ERROR: problem encountered at line 2 in file run.tcl
+
+% include /home/ee5214s1m4/main/VeriFi-LUMS-AHB-Project/run.tcl
+%% clear -all
+INFO (IPF121): Cleared environment completely for new design analysis.
+%% analyze -sv09 -f flist.f
+INFO (INL011): Processing "-f" file "/home/ee5214s1m4/main/VeriFi-LUMS-AHB-Project/flist.f".
+[-- (VERI-1482)] Analyzing Verilog file '/mnt/cadence_tools/installs/JASPER22/jasper_2022.06/lib/verilog/packages/std/std.sv' into library 'std'
+[-- (VERI-1482)] Analyzing Verilog file './include/ahb3lite_pkg.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/ahb3lite_if.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/test_ahb3liten.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/tb_ahb3liten.sv'
+[-- (VERI-1482)] Analyzing Verilog file './sim/coverage_module.sv'
+[WARN (VERI-1672)] ./sim/coverage_module.sv(36): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(36): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(69): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(69): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(85): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(85): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(90): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(90): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(95): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(119): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(119): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(124): hierarchical name cannot be in an identifier list
+[WARN (VERI-1672)] ./sim/coverage_module.sv(124): hierarchical name cannot be in an identifier list
+[-- (VERI-1482)] Analyzing Verilog file './src/design.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/mem.sv'
+[-- (VERI-1482)] Analyzing Verilog file './src/design_property.sv'
+[ERROR (VERI-9011)] ./src/design_property.sv(136): block id 'check_hresp_P' is already declared
+[INFO (VERI-1967)] ./src/design_property.sv(118): previous declaration of 'check_hresp_P' is from here
+[ERROR (VERI-1116)] ./src/design_property.sv(142): 'check_HSIZE_width' is already declared
+[INFO (VERI-1967)] ./src/design_property.sv(125): previous declaration of 'check_HSIZE_width' is from here
+[ERROR (VERI-9011)] ./src/design_property.sv(148): block id 'check_HSIZE_width_p' is already declared
+[INFO (VERI-1967)] ./src/design_property.sv(130): previous declaration of 'check_HSIZE_width_p' is from here
+[ERROR (VERI-1072)] ./src/design_property.sv(187): module 'ahb3liten_prop' is ignored due to previous errors
+Summary of errors detected:
+	[ERROR (VERI-9011)] ./src/design_property.sv(136): block id 'check_hresp_P' is already declared
+	[ERROR (VERI-1116)] ./src/design_property.sv(142): 'check_HSIZE_width' is already declared
+	[ERROR (VERI-9011)] ./src/design_property.sv(148): block id 'check_HSIZE_width_p' is already declared
+	[ERROR (VERI-1072)] ./src/design_property.sv(187): module 'ahb3liten_prop' is ignored due to previous errors
+ERROR at line 2 in file /home/ee5214s1m4/main/VeriFi-LUMS-AHB-Project/run.tcl, more info in Tcl-variable errorInfo
+ERROR (ENL034): 4 errors detected in the design file(s).
+
+
+WARNING (WG013): Signal "SIGHUP" has been received from an unknown source (external to Jasper) in the analysis session.
+    For message help, type "help -message WG013".
+WARNING (WG010): Signal "SIGHUP" has been caught. The analysis session will exit.
+    For message help, type "help -message WG010".
+INFO (IPL018): The peak resident set memory use for this session was 0.340 GB.
+INFO (IPL014): Waiting for the Tcl-thread to exit.
+INFO (IPL015): The Tcl-thread exited with status 129.
+INFO (IPL016): Exiting the analysis session with status 129.

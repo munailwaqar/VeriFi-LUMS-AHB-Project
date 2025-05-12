@@ -164,6 +164,6 @@ endproperty
 
 // hsize_const_sixteen_beat_tf_burst_P: assert property (hsize_const_sixteen_beat_tf_burst)
 //     else $display($time,"FAIL:: hsize_const_sixteen_beat_tf_burst is inconsistent");
-// ///////////~~~~~~~~~~~~~~~~~~~~PROPERTY 10 Failed~~~~~~~~~~~~~~~~~~~~~////////s////////////////
+// ///////////~~~~~~~~~~~~~~~~~~~~PROPERTY 10 Failed~~~~~~~~~~~~~~~~~~~~~////////////////////////
 
 endmodule

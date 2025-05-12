@@ -1,0 +1,64 @@
+2025-05-12 13:14:29.527362 (29857) main____ INFO    ----------------------------------------
+2025-05-12 13:14:29.527436 (29857) main____ INFO    Jasper version info
+2025-05-12 13:14:29.527449 (29857) main____ INFO      tool      : Jasper 2022.06
+2025-05-12 13:14:29.527460 (29857) main____ INFO      version   : 2022.06 FCS 64 bits
+2025-05-12 13:14:29.527469 (29857) main____ INFO      build date: 2022.06.22 13:46:24 UTC
+2025-05-12 13:14:29.527476 (29857) main____ INFO    ----------------------------------------
+2025-05-12 13:14:29.527483 (29857) main____ INFO    Runtime info:
+2025-05-12 13:14:29.527491 (29857) main____ INFO      platform  : Linux 3.10.0-1160.114.2.el7.x86_64 x86_64
+2025-05-12 13:14:29.527502 (29857) main____ INFO      hostname  : pc4
+2025-05-12 13:14:29.527510 (29857) main____ INFO      pid       : 29857
+2025-05-12 13:14:29.527517 (29857) main____ INFO      arguments : '-style' 'windows' 'run.tcl'
+2025-05-12 13:14:29.527528 (29857) main____ INFO      locale    : UTF-8
+2025-05-12 13:14:29.527541 (29857) main____ INFO    ----------------------------------------
+2025-05-12 13:14:29.527549 (29857) main____ INFO    System resource limits info:
+2025-05-12 13:14:29.527557 (29857) main____ INFO      virtual memory: unlimited
+2025-05-12 13:14:29.527564 (29857) main____ INFO      cpu time      : unlimited
+2025-05-12 13:14:29.527575 (29857) main____ INFO      processes     : 4096
+2025-05-12 13:14:29.527591 (29857) main____ INFO      stack size    : 8388608 B
+2025-05-12 13:14:29.527601 (29857) main____ INFO      core file size: 0 B
+2025-05-12 13:14:29.527609 (29857) main____ INFO      open files    : 1024
+2025-05-12 13:14:29.527616 (29857) main____ INFO      file size     : unlimited
+2025-05-12 13:14:29.527623 (29857) main____ INFO    ----------------------------------------
+2025-05-12 13:14:29.527630 (29857) main____ INFO    Memory statistics:
+2025-05-12 13:14:29.527640 (29857) main____ INFO      total physical memory  : 7842124 kB
+2025-05-12 13:14:29.527648 (29857) main____ INFO      free physical memory   : 167452 kB
+2025-05-12 13:14:29.527655 (29857) main____ INFO      committed address space: 21521444 kB
+2025-05-12 13:14:29.527662 (29857) main____ INFO    ----------------------------------------
+2025-05-12 13:14:29.528787 (29857) main____ INFO    Important environment variables:
+2025-05-12 13:14:29.528810 (29857) main____ INFO      CDS_INST_DIR          : '/mnt/cadence_tools/installs/IC231'
+2025-05-12 13:14:29.528820 (29857) main____ INFO      CDS_LIC_FILE          : '5280@cadenceserver'
+2025-05-12 13:14:29.528830 (29857) main____ INFO      CDS_ROOT              : '/mnt/cadence_tools/installs/IC231'
+2025-05-12 13:14:29.528839 (29857) main____ INFO      DISPLAY               : ':0'
+2025-05-12 13:14:29.528848 (29857) main____ INFO      JASPER_INSTALL_DIR    : '/mnt/cadence_tools/installs/JASPER22/jasper_2022.06'
+2025-05-12 13:14:29.528861 (29857) main____ INFO      JASPER_MACRO_LINEFILES: '1'
+2025-05-12 13:14:29.528870 (29857) main____ INFO      JASPER_OS_CHECK       : '1'
+2025-05-12 13:14:29.528878 (29857) main____ INFO      JG_MACRO_LINEFILES    : '1'
+2025-05-12 13:14:29.528887 (29857) main____ INFO      LANG                  : 'en_US.UTF-8'
+2025-05-12 13:14:29.528895 (29857) main____ INFO      LM_LICENSE_FILE       : '5280@cadenceserver'
+2025-05-12 13:14:29.528903 (29857) main____ INFO    ----------------------------------------
+2025-05-12 13:14:29.533363 (29857) lic_core INFO    Initializing license system ...
+2025-05-12 13:14:29.565483 (29857) lic_core INFO    ... license system initialized.
+2025-05-12 13:14:29.568264 (29857) lic__man INFO    Claim 'main' for <ui>.
+2025-05-12 13:14:29.568331 (29857) lic_core INFO    (1) checking out 'jasper_interactive' ...
+2025-05-12 13:14:29.598650 (29857) lic_core INFO    ... (1) checkout failed (error: -5) ("FLEXnet ERROR(-5, 0, 0): No such feature exists.")
+2025-05-12 13:14:29.598698 (29857) lic_core INFO    (2) checking out 'jasper_pint' ...
+2025-05-12 13:14:29.621599 (29857) lic_core INFO    ... (2) checkout succeeded
+2025-05-12 13:14:29.621709 (29857) lic__man INFO    Claim 'fpv' for <ui>.
+2025-05-12 13:14:29.621744 (29857) lic_core INFO    (3) checking out 'jasper_fpv' ...
+2025-05-12 13:14:29.635039 (29857) lic_core INFO    ... (3) checkout failed (error: -5) ("FLEXnet ERROR(-5, 0, 0): No such feature exists.")
+2025-05-12 13:14:29.635126 (29857) lic_core INFO    (4) checking out 'jasper_fao' ...
+2025-05-12 13:14:29.653776 (29857) lic_core INFO    ... (4) checkout failed (error: -5) ("FLEXnet ERROR(-5, 0, 0): No such feature exists.")
+2025-05-12 13:14:29.653826 (29857) lic_core INFO    (5) checking out 'jasper_papp' ...
+2025-05-12 13:14:29.690726 (29857) lic_core INFO    ... (5) checkout succeeded
+2025-05-12 13:14:29.691859 (29857) main____ INFO    Tool inactivity delay is 480000 ms.
+2025-05-12 13:14:30.487703 (29857) lic__man INFO    Claim 'fpv' for <ui>.
+2025-05-12 13:14:31.124856 (29857) lic__man INFO    Unclaim 'fpv' for <ui>.
+2025-05-12 13:14:31.124899 (29857) lic__man INFO    Claim 'fpv' for <ui>.
+2025-05-12 13:14:31.129328 (29857) session_ INFO    Starting analysis session with session id 'session_0' (launcher: <local>) ...
+2025-05-12 13:14:31.131303 (29857) session_ INFO    Analysis session with session id 'session_0' started (pid: 29880)
+2025-05-12 13:14:44.691266 (29857) session_ INFO    Analysis session 'session_0' connected to the console (host: 127.0.0.1:45990)
+2025-05-12 13:14:46.339594 (29857) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-05-12 13:14:46.342520 (29857) lic__man INFO    Unclaim everything for 'session_0'.
+2025-05-12 13:14:50.816276 (29857) main____ INFO    Releasing console memory by request of analysis session 'session_0'.
+2025-05-12 13:14:50.816360 (29857) lic__man INFO    Unclaim everything for 'session_0'.
