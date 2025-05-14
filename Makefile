@@ -1,3 +1,5 @@
+SIM_DEFINES += -define include_clk
+FORMAL_DEFINES +=
 FLIST = ./flist.f
 BASICFLAGS = -access +rwc -sv -disable_sem2009 -clean
 TOP = ./sim/tb_ahb3liten.sv
@@ -8,27 +10,27 @@ DUT = ./src/design.sv
 all: help
 
 simulate:
-	xrun -f $(FLIST) -top tb_ahb3liten -access +rwc
+	xrun -f $(FLIST) $(SIM_DEFINES) -top tb_ahb3liten -access +rwc
 
 gui:
-	xrun -f $(FLIST) -top tb_ahb3liten -access +rwc -gui
+	xrun -f $(FLIST) $(SIM_DEFINES) -top tb_ahb3liten -access +rwc -gui
 
 code_coverage:
-	xrun -f $(FLIST) -access +rwc -covdut tb_ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
+	xrun -f $(FLIST) $(SIM_DEFINES) -access +rwc -covdut tb_ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
 	imc -load cov_work/scope/test/
 
 functional_coverage:
-	xrun -f $(FLIST) -access +rwc -covdut tb_ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
+	xrun -f $(FLIST) $(SIM_DEFINES) -access +rwc -covdut tb_ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
 	imc -load cov_work/scope/test/
 
 run:
-	xrun -f $(FLIST) $(DUT) $(TOP) $(BASICFLAGS) -logfile tb_ahb3liten_nobugs.log
+	xrun -f $(FLIST) $(DUT) $(TOP) $(BASICFLAGS) $(FORMAL_DEFINES) -logfile tb_ahb3liten_nobugs.log
 
 assert_rst:
-	xrun -f $(FLIST) $(DUT) $(TOP) $(BASICFLAGS) -logfile test_fifo_assert_rst.log -define assert_rst
+	xrun -f $(FLIST) $(DUT) $(TOP) $(BASICFLAGS)  $(FORMAL_DEFINES) -logfile test_fifo_assert_rst.log -define assert_rst
 
 deassert_rst:
-	xrun -f $(FLIST) $(DUT) $(TOP) $(BASICFLAGS) -logfile test_fifo_deassert_rst.log -define deassert_rst
+	xrun -f $(FLIST) $(DUT) $(TOP) $(BASICFLAGS) $(FORMAL_DEFINES)  -logfile test_fifo_deassert_rst.log -define deassert_rst
 
 compile:
 	./RUNME.sh
