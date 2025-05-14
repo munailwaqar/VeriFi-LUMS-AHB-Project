@@ -3,8 +3,10 @@
 ./sim/ahb3lite_if.sv
 ./sim/test_ahb3liten.sv
 ./sim/tb_ahb3liten.sv
-./sim/coverage_module.sv
+
+./cov/coverage_module.sv
 
 ./src/design.sv
 ./src/mem.sv
-./src/design_property.sv
+
+./formal/design_property.sv

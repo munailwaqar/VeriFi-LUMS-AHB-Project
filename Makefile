@@ -14,7 +14,7 @@ gui:
 	xrun -f $(FLIST) -top tb_ahb3liten -access +rwc -gui
 
 code_coverage:
-	xrun -f $(FLIST)-access +rwc -covdut tb_ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
+	xrun -f $(FLIST) -access +rwc -covdut tb_ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
 	imc -load cov_work/scope/test/
 
 functional_coverage:
