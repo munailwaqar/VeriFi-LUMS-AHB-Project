@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // (c) Copyright 2025 VeriFi-LUMS-AHB-Project. All Rights Reserved.
 //
 // File name : coverage_module.sv
@@ -6,7 +6,7 @@
 // Description : Covergroups and coverpoints are in this file
 // Notes : 
 //
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import ahb3lite_pkg::*;
 
 module coverage_module(
@@ -21,7 +21,7 @@ module coverage_module(
 ////////////////////////////////////////////////////////////////////////Coverage of HTRANS 
 covergroup HTRANS_covergroup @(posedge HCLK);
    option.per_instance = 1;
-
+   option.cross_auto_bin_max = 0;
  coverpoint bus1.HTRANS {
    bins idle = {2'b00};
    bins bus1y = {2'b01};
@@ -40,6 +40,7 @@ covergroup HTRANS_covergroup @(posedge HCLK);
     //bus1 is performing a non-sequential transfer and the slave is not ready to accept the transfer
 
    bins nonseq_not_ready = binsof(bus1.HTRANS.nonseq) && binsof(bus1.HREADY.not_ready);
+   
   }
 endgroup : HTRANS_covergroup
 HTRANS_covergroup hc;
@@ -50,6 +51,7 @@ HTRANS_covergroup hc;
 //////////////////////////////////////////////////////////////////////coverage of BURST type
 covergroup BURST_covergroup @(posedge HCLK);
      option.per_instance = 1;
+     option.cross_auto_bin_max = 0;
 coverpoint bus1.HBURST{
   bins single_Burst = {3'b000};
   bins incr_undefine_length = {3'b001};
@@ -74,59 +76,15 @@ coverpoint bus1.HTRANS {
 endgroup : BURST_covergroup 
 BURST_covergroup br;
 
-///////////////////////////////////////////////////////////////////////coverage of write data
-covergroup write_data_covergroup@(posedge HCLK);
+///////////////////////////////////////////////////////////////////////coverage of response
+covergroup response@(posedge HCLK);
         option.per_instance = 1;
-coverpoint  bus1.HADDR;
-coverpoint  bus1.HWRITE;
-coverpoint  bus1.HWDATA;
-coverpoint HRESETn;  
-
-cross bus1.HWRITE, bus1.HWDATA {
-    bins write_data_valid = binsof(bus1.HWRITE) && binsof(bus1.HWDATA);//Ensures data is valid during write operati
-    bins write_data_invalid = !binsof(bus1.HWRITE) && binsof(bus1.HWDATA);
-  }
-
-  cross bus1.HADDR, bus1.HWRITE {
-    bins addr_write_valid = binsof(bus1.HADDR) && binsof(bus1.HWRITE);//Ensures address is valid when writing data.
-    bins addr_write_invalid = !binsof(bus1.HADDR) && binsof(bus1.HWRITE);
-  }
-
-  cross HRESETn, bus1.HWRITE {
-    bins reset_write_valid = binsof(HRESETn) && binsof(bus1.HWRITE);//Ensures write operations behave correctly during reset.
-    bins reset_write_invalid = !binsof(HRESETn) && binsof(bus1.HWRITE);
-  }
-endgroup : write_data_covergroup
-write_data_covergroup wd;
-
-////////////////////////////////////////////////////////////////coverage of read data elements
-covergroup slave_signals_covergroup @(posedge HCLK);
-  option.per_instance = 1;
-coverpoint bus1.HRDATA;
-  
-coverpoint bus1.HREADYOUT{
-  bins hreadyout_high = {1'b1};
-  bins hreadyout_low = {1'b0};
-  }
-coverpoint bus1.HREADY{
-  bins hready_high = {1'b1};
-  bins hready_low = {1'b0};
-  }
-coverpoint bus1.HRESP{
-  bins HRESP_high = {1'b1};
+        coverpoint bus1.HRESP{
+  // bins HRESP_high = {1'b1};
   bins HRESP_low = {1'b0};
   }
-   cross bus1.HREADYOUT, bus1.HREADY {
-   bins hreadyout_high_hready_high = binsof(bus1.HREADYOUT.hreadyout_high) && binsof(bus1.HREADY.hready_high);
-   bins hreadyout_low_hready_low = binsof(bus1.HREADYOUT.hreadyout_low) && binsof(bus1.HREADY.hready_low);
-  }
-
- cross bus1.HREADYOUT, bus1.HRESP {
-   bins hreadyout_high_HRESP_high = binsof(bus1.HREADYOUT.hreadyout_high) && binsof(bus1.HRESP.HRESP_high);
-   bins hreadyout_low_HRESP_low = binsof(bus1.HREADYOUT.hreadyout_low) && binsof(bus1.HRESP.HRESP_low);
-  }
-endgroup : slave_signals_covergroup 
-slave_signals_covergroup rd;
+endgroup : response
+response rsp;
 
 //////////////////////////////////////////////////////////////////////////////coverage of size 
 covergroup size_covergroup @(posedge HCLK);
@@ -146,7 +104,7 @@ endgroup : size_covergroup
 size_covergroup sg;
 
 
-//////////////////////////////// HPROT for Non-cacheable, non-bufferable, privileged, data access
+////////////////////////////////////////////////////////////////////////////////////// HPROT
 covergroup HPROT_covergroup @(posedge HCLK);
        option.per_instance = 1;
   coverpoint bus1.HPROT {
@@ -158,16 +116,35 @@ covergroup HPROT_covergroup @(posedge HCLK);
   }
 endgroup
 HPROT_covergroup protect;
+///////////////////////////////////////////////////////////////////////coverage of transfer status
+covergroup transfer_status@(posedge HCLK);
+        option.per_instance = 1;
+ coverpoint bus1.HREADYOUT{
+  bins hreadyout_high = {1'b1};
+  bins hreadyout_low = {1'b0};
+  }
+endgroup : transfer_status
+transfer_status Trs;
+///////////////////////////////////////////////////////////////////////coverage of transfer status
 
+covergroup previous_transfer_status@(posedge HCLK);
+        option.per_instance = 1;
+ coverpoint bus1.HREADYOUT{
+  bins hreadyout_high = {1'b1};
+  bins hreadyout_low = {1'b0};
+  }
+endgroup : previous_transfer_status
+previous_transfer_status pts;
 
 initial 
 begin
-rd=new;
 hc=new;
 br=new;
-wd=new;
+rsp=new;
 sg=new;
 protect=new;
+Trs=new;
+pts=new;
 end
 
 endmodule
