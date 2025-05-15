@@ -102,7 +102,7 @@ check_addr_range_P: assert property (check_addr_range)
 
 property check_bus_transfer_width;
   @(posedge HCLK)
- (HWRITE) |-> (HWDATA >= 0 && HWDATA <= 32'hFFFFFFFF);
+  (HSIZE) |-> (HWDATA >= 0 && HWDATA <= 32'hFFFFFFFF);
 endproperty
 
 check_bus_transfer_width_P: assert property (check_bus_transfer_width)
