@@ -98,7 +98,7 @@ previous_transfer_status pts;
 covergroup response@(posedge HCLK);
         option.per_instance = 1;
         coverpoint bus1.HRESP{
-  // bins HRESP_high = {1'b1};
+  bins HRESP_high = {1'b1};
   bins HRESP_low = {1'b0};
   }
 endgroup : response
@@ -180,19 +180,10 @@ covergroup cross_cg_HTRANS_and_HREADY @(posedge HCLK);
   }
 
  cross bus1.HTRANS, bus1.HREADY {
-   // bus1 is idle and the slave is ready to accept a new transfer
     bins idle_ready = binsof(bus1.HTRANS.idle) && binsof(bus1.HREADY.ready);
-
-    // bus1 is performing a non-sequential transfer and the slave is not ready to accept the transfer
     bins nonseq_not_ready = binsof(bus1.HTRANS.nonseq) && binsof(bus1.HREADY.not_ready);
-
-    // bus1 is performing a sequential transfer and the slave is ready to accept the transfer
     bins seq_ready = binsof(bus1.HTRANS.seq) && binsof(bus1.HREADY.ready);
-
-    // bus1 is busy and the slave is not ready to accept the transfer
     bins busy_not_ready = binsof(bus1.HTRANS.busy) && binsof(bus1.HREADY.not_ready);
-
-    // bus1 is performing a non-sequential transfer and the slave is ready to accept the transfer
     bins nonseq_ready = binsof(bus1.HTRANS.nonseq) && binsof(bus1.HREADY.ready);
    
   }
