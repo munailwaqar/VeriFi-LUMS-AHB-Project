@@ -19,7 +19,7 @@ coverage:
 	xrun -f $(FLIST) $(SIM_DEFINES) -access +rwc -covdut tb_ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
 	imc -load cov_work/scope/test/
 
-formal:
+formal-verif:
 	./RUNME.sh
 
 clean:
@@ -29,7 +29,7 @@ help:
 	@echo "Available targets:"
 	@echo "simulate            ##Simulate without gui"
 	@echo "gui                 ##Simulate with gui"
-	@echo "formal              ##Run formal verification"
+	@echo "formal-verif        ##Run formal verification"
 	@echo "coverage            ##Run coverage"
 	@echo "clean               ##Remove all generated files"
 	@echo "help                ##Print all available targets"
