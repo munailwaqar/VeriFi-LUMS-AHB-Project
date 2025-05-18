@@ -15,24 +15,11 @@ simulate:
 gui:
 	xrun -f $(FLIST) $(SIM_DEFINES) -top tb_ahb3liten -access +rwc -gui
 
-code_coverage:
+coverage:
 	xrun -f $(FLIST) $(SIM_DEFINES) -access +rwc -covdut tb_ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
 	imc -load cov_work/scope/test/
 
-functional_coverage:
-	xrun -f $(FLIST) $(SIM_DEFINES) -access +rwc -covdut tb_ahb3liten -coverage all -covoverwrite -covfile ./covfile.ccf
-	imc -load cov_work/scope/test/
-
-run:
-	xrun -f $(FLIST) $(DUT) $(TOP) $(BASICFLAGS) $(FORMAL_DEFINES) -logfile tb_ahb3liten_nobugs.log
-
-assert_rst:
-	xrun -f $(FLIST) $(DUT) $(TOP) $(BASICFLAGS)  $(FORMAL_DEFINES) -logfile test_fifo_assert_rst.log -define assert_rst
-
-deassert_rst:
-	xrun -f $(FLIST) $(DUT) $(TOP) $(BASICFLAGS) $(FORMAL_DEFINES)  -logfile test_fifo_deassert_rst.log -define deassert_rst
-
-compile:
+formal:
 	./RUNME.sh
 
 clean:
@@ -42,12 +29,8 @@ help:
 	@echo "Available targets:"
 	@echo "simulate            ##Simulate without gui"
 	@echo "gui                 ##Simulate with gui"
-	@echo "run                 ##Run top-level testbench"
-	@echo "assert_rst          ##Run test with assert_rst define"
-	@echo "deassert_rst        ##Run test with deassert_rst define"
-	@echo "compile             ##Run compile script"
-	@echo "code_coverage       ##Run code coverage"
-	@echo "functional_coverage ##Run functional coverage"
+	@echo "formal              ##Run formal verification"
+	@echo "coverage            ##Run coverage"
 	@echo "clean               ##Remove all generated files"
 	@echo "help                ##Print all available targets"
 
